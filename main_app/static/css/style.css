@@ -1,3 +1,5 @@
+
+
 body {
   display: flex;
   min-height: 100vh;
@@ -12,3 +14,11 @@ main {
     background-color: #02D1B2;
     padding: 10px;
 }
+
+/* .city-name {
+  background-color: pink;
+}
+
+.city-image {
+  background-color: lightblue;
+} */
