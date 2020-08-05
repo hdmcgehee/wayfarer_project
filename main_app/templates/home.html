@@ -135,11 +135,16 @@
       <p class="modal-card-title">SIGN UP</p>
       <!-- <button class="delete" aria-label="close"></button> -->
     </header>
-    <section class="modal-card-body">
-      <p>THIS IS SIGN UP FORM</p>
-    </section>
-    <footer class="modal-card-foot">
-      <button class="button is-success">Save changes</button>
+      <section class="modal-card-body">
+        <p>THIS IS SIGN UP FORM</p>
+      <form action="{% url 'home' %}" method="POST">
+          {% csrf_token %}
+          {{ form.as_p }}
+        
+      </section>
+      <footer class="modal-card-foot">
+      <button type="submit" value="sign_up" class="button is-success">Sign Up</button>
+      </form>
       <button id="cancel-sign-up" class="button">Cancel</button>
     </footer>
   </div>
