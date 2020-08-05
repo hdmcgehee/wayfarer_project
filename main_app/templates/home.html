@@ -109,4 +109,62 @@
 		</script>
 
 
+<!-- Login Modal -->
+<div class="modal" id="sign-in-modal">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">SIGN IN</p>
+      <!-- <button class="delete" aria-label="close"></button> -->
+    </header>
+    <section class="modal-card-body">
+      <p>THIS IS SIGN IN FORM</p>
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button is-success">Save changes</button>
+      <button id="cancel-sign-in" class="button">Cancel</button>
+    </footer>
+  </div>
+</div>
+
+<!-- Sign Up Modal -->
+<div class="modal" id="sign-up-modal">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">SIGN UP</p>
+      <!-- <button class="delete" aria-label="close"></button> -->
+    </header>
+    <section class="modal-card-body">
+      <p>THIS IS SIGN UP FORM</p>
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button is-success">Save changes</button>
+      <button id="cancel-sign-up" class="button">Cancel</button>
+    </footer>
+  </div>
+</div>
+
+<script>
+  // Sign In Modal DOM manipulation
+  const signIn = document.getElementById('signin');
+  const modalSignIn = document.getElementById('sign-in-modal');
+  const cancelSignIn = document.getElementById('cancel-sign-in');
+  signIn.addEventListener("click",()=>{modalSignIn.classList.add('is-active')})
+  cancelSignIn.addEventListener("click",()=>{modalSignIn.classList.remove('is-active')})
+  
+  // Sign Up Modal DOM Manipulation
+  const signUp = document.getElementById('signup')
+  const modalSignUp = document.getElementById('sign-up-modal');
+  const cancelSignUp = document.getElementById('cancel-sign-up');
+  signUp.addEventListener("click",()=>{modalSignUp.classList.add('is-active')});
+  cancelSignUp.addEventListener("click",()=>{modalSignUp.classList.remove('is-active')});
+
+</script>
+
+
+
+
+
+
 {% endblock %}
