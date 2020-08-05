@@ -8,7 +8,9 @@ from django.contrib.auth.models import User
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     city = models.CharField(max_length=50, default='default city')
-    image = models.CharField(max_length=1000, default='default image')
+    image = models.CharField(max_length=1000, default='default_image.jpg')
+    display_name = models.CharField(max_length=100, default='display name')
+    
 
 #  --- CITY MODEL
 class City(models.Model):
