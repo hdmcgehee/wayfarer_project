@@ -17,12 +17,45 @@
                 <p class = 'title'>{{profile.display_name}}</p>
                 <p>{{user.date_joined}}</p>
                 <p>{{profile.city}}</p>
+                <button class='button' id = 'edit-button'>Edit Profile</button>
 
           </figure>
         
       </div>
     </div>
   </section>
+
+  <!-- Sign Up Modal -->
+<div class="modal" id="edit-profile">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Edit Profile</p>
+        <!-- <button class="delete" aria-label="close"></button> -->
+      </header>
+        <section class="modal-card-body">
+        <form action="" method="POST">
+          {% csrf_token %}
+          {{ form.as_p }}
+        </section>
+        <footer class="modal-card-foot">
+        <button type="submit" value="sign_up" class="button is-success">Save Changes</button>
+        </form>
+        <button id="cancel" class="button">Cancel</button>
+      </footer>
+    </div>
+  </div>
+
+  <script>
+
+    // Sign In Modal DOM manipulation
+  const editButton = document.getElementById('edit-button');
+  const editProfile = document.getElementById('edit-profile');
+  const cancel = document.getElementById('cancel');
+  editButton.addEventListener("click",()=>{editProfile.classList.add('is-active')})
+  cancel.addEventListener("click",()=>{editProfile.classList.remove('is-active')})
+
+  </script>
 
 
 {% endblock %}

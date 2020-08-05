@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
 from .models import Profile
+from .forms import ProfileForm, CityForm, PostForm
 
 # Define the home view
 
@@ -50,9 +51,19 @@ def profile(request):
   current_user = request.user
   id = current_user.id
   profile = Profile.objects.get(user = id)
+  if request.method == 'POST':
+    form = ProfileForm(request.POST, instance = profile)
+    if form.is_valid():
+      profile = form.save()
+      return redirect('profile')
+  
+  
+  else:
+    form = ProfileForm(instance = profile)
 
-  context = {
-    'profile': profile
-  }
+    context = {
+      'profile': profile,
+      'form': form
+    }
 
-  return render(request, 'registration/profile.html', context)
+    return render(request, 'registration/profile.html', context)
