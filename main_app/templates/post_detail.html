@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<div class="card">
+    <header class="card-header">
+        <p class="card-header-title">
+            {{post.title}}
+            {{post.city}}
+        </p>
+        <p>
+            {{profile.display_name}}
+        </p>
+    </header>
+    <div class="card-content">
+        <div class="content">
+            <p>
+                {{post.content}}
+            </p>
+      </div>
+    </div>
+  </div>
+
+
+{% endblock %}

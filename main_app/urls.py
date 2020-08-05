@@ -21,4 +21,9 @@ urlpatterns = [
     # ___________    USER PROFILE  __________
     path('profile/', views.profile, name = 'profile'),
 
+    # ___________    Post Show Page  __________
+    path('post/<int:post_id>', views.post_detail, name = 'post_detail'),
+
+
+
 ]

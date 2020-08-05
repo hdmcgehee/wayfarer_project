@@ -6,24 +6,61 @@
 <section class="section">
     <div class="container">
       <div class="columns is-centered">
-        
+        <div class="columns" is-half>
+
           <figure>
             
             <h1>This is a profile page</h1>
-                
-                {% load static %}
-                <img src="https://undark.org/wp-content/uploads/2020/02/GettyImages-1199242002-1-scaled.jpg" width='300' alt="">
-                
-                <p class = 'title'>{{profile.display_name}}</p>
-                <p>{{user.date_joined}}</p>
-                <p>{{profile.city}}</p>
-                <button class='button' id = 'edit-button'>Edit Profile</button>
-
+            
+            {% load static %}
+            <img src="https://undark.org/wp-content/uploads/2020/02/GettyImages-1199242002-1-scaled.jpg" width='300' alt="">
+            
+            <p class = 'title'>{{profile.display_name}}</p>
+            <p>{{user.date_joined}}</p>
+            <p>{{profile.city}}</p>
+            <button class='button' id = 'edit-button'>Edit Profile</button>
+            
           </figure>
+          
+        </div>
+
+        <div class="columns" is-half>
+          <div class="card">
+            <h1 class="title is-1">Recent Posts</h1>
+ 
+            {% for post in profile.post_set.all %}
+            
+            <div>
+              <header class="card-header">
+                <p class="card-header-title">
+                  <a href="{% url 'post_detail' post.id%}">
+                    {{post.title}}
+                  </a>
+                </p>
+                <a href="#" class="card-header-icon" aria-label="more options">
+                  <span class="icon">
+                    <i class="fas fa-angle-down" aria-hidden="true"></i>
+                  </span>
+                </a>
+              </header>
+              <div class="card-content">
+                <div class="content">
+                  
+                  {{post.content}}
+                  
+                </div>
+              </div>
+              
+              {% endfor %}
+            </div>
+          </div>
+            
+        </div>
+        </div>
+        </section>
         
-      </div>
-    </div>
-  </section>
+        </div>
+        
 
   <!-- Sign Up Modal -->
 <div class="modal" id="edit-profile">
