@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
+from .models import Profile
 
 # Define the home view
 
@@ -24,6 +25,15 @@ def signup(request):
     if form.is_valid():
         user = form.save()
         login(request, user)
+        print(user.id)
+        ###
+        user_profile = Profile.objects.create(user=user)
+        user_profile.save()
+        print(user_profile)
+
+        # user_profile.save(commit=false)
+        # user_profile.user(user)
+        
         print('elif block hit')
         return redirect('signup')
     else:
@@ -34,3 +44,7 @@ def signup(request):
 @login_required
 def city_detail(request):
   return render(request, 'city/detail.html')
+
+@login_required
+def profile(request):
+  pass

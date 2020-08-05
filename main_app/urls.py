@@ -14,6 +14,9 @@ urlpatterns = [
 
 
     # ___________    CITY DETAIL    _________
-    path('city/', views.city_detail, name = 'city_detail')
+    path('city/', views.city_detail, name = 'city_detail'),
+
+    # ___________    USER PROFILE  __________
+    path('profile/', views.profile, name = 'profile'),
 
 ]
