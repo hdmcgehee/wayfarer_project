@@ -70,5 +70,6 @@ def profile(request):
 
 def post_detail(request, post_id):
   post = Post.objects.get(id=post_id)
-  profile = Profile.objects.get(id=post.id)
+  profile = Profile.objects.get(id=post.profile_id)
+  
   return render(request, 'post_detail.html', {'post': post, 'profile': profile})
