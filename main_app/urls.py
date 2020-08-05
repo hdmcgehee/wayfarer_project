@@ -9,6 +9,8 @@ urlpatterns = [
 
 
     # _____________  AUTH  _______________
+
+    
     # ___________    SIGNUP      _________
     path('', views.signup, name='signup'),
 

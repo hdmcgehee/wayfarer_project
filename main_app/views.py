@@ -47,4 +47,12 @@ def city_detail(request):
 
 @login_required
 def profile(request):
-  pass
+  current_user = request.user
+  id = current_user.id
+  profile = Profile.objects.get(user = id)
+
+  context = {
+    'profile': profile
+  }
+
+  return render(request, 'registration/profile.html', context)
