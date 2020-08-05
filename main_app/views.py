@@ -5,14 +5,13 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
 
 # Define the home view
-def home(request):
+def signup(request):
   error = None
   form = UserCreationForm()
   context = {
     'form': form,
     'error': error,
   }
-
   if request.method == 'POST':
     #create instance of form
     form = UserCreationForm(request.POST)
@@ -20,12 +19,12 @@ def home(request):
         user = form.save()
         login(request, user)
         print('elif block hit')
-        return redirect('home')
+        return redirect('signup')
     else:
-      return redirect('home')
+      return redirect('signup')
   else:
     return render(request, 'home.html', context)
 
-
+@login_required
 def city_detail(request):
   return render(request, 'city/detail.html')

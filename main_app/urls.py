@@ -5,11 +5,12 @@ urlpatterns = [
     
     
     # ___________    HOME      ____________
-    path('', views.home, name='home'),
+    # path('', views.home, name='home'),
 
 
-    # ___________    SIGNUP      ____________
-    path('', views.home, name='signup'),
+    # _____________  AUTH  _______________
+    # ___________    SIGNUP      _________
+    path('', views.signup, name='signup'),
 
 
     # ___________    CITY DETAIL    _________

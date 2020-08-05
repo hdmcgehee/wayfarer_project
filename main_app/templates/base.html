@@ -32,11 +32,14 @@
             </div>
             <div id="navbarMenuHeroA" class="navbar-menu">
             <div class="navbar-end">
-                <a class="navbar-item" id="signin">
+                <a href="{% url 'login' %}" class="navbar-item" id="signin">
                 Sign In
                 </a>
                 <a class="navbar-item" id="signup">
                 Sign Up
+                </a>
+                <a href="{% url 'logout' %}" class="navbar-item" id="">
+                Logout
                 </a>
                 <a class="navbar-item">
                 Profile
