@@ -5,6 +5,12 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
 
 # Define the home view
+
+@login_required
+def home(request):
+  HttpResponse('home')
+
+
 def signup(request):
   error = None
   form = UserCreationForm()

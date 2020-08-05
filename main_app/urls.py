@@ -5,7 +5,7 @@ urlpatterns = [
     
     
     # ___________    HOME      ____________
-    # path('', views.home, name='home'),
+    path('home/', views.home, name='home'),
 
 
     # _____________  AUTH  _______________
