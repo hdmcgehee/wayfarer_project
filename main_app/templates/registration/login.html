@@ -110,7 +110,7 @@
 
 
 <!-- Login Modal -->
-<div class="modal" id="sign-in-modal">
+<div class="modal is-active" id="sign-in-modal">
   <div class="modal-background"></div>
   <div class="modal-card">
     <header class="modal-card-head">
@@ -119,9 +119,14 @@
     </header>
     <section class="modal-card-body">
       <p>THIS IS SIGN IN FORM</p>
-    </section>
-    <footer class="modal-card-foot">
-      <button class="button is-success">Save changes</button>
+    <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="hidden" name="next" value="{{ next }}">
+        </section>
+        <footer class="modal-card-foot">
+            <button type="submit" class="button is-success" value="login">Save changes</button>
+    </form>
       <button id="cancel-sign-in" class="button">Cancel</button>
     </footer>
   </div>
