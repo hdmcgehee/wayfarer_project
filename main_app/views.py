@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
-from .models import Profile
+from .models import Profile, Post, City
 from .forms import ProfileForm, CityForm, PostForm
 
 # Define the home view
@@ -67,3 +67,8 @@ def profile(request):
     }
 
     return render(request, 'registration/profile.html', context)
+
+def post_detail(request, post_id):
+  post = Post.objects.get(id=post_id)
+  profile = Profile.objects.get(id=post.id)
+  return render(request, 'post_detail.html', {'post': post, 'profile': profile})
