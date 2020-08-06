@@ -4,16 +4,20 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
+
+
 # --- PROFILE MODEL
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     city = models.CharField(max_length=50, default='default city')
-    image = models.CharField(max_length=1000, default='default_image.jpg')
+    image = models.CharField(max_length=1000, default='https://undark.org/wp-content/uploads/2020/02/GettyImages-1199242002-1-scaled.jpg')
     display_name = models.CharField(max_length=100, default='display name')
 
     def __str__(self):
         return self.display_name
     
+
+
 
 #  --- CITY MODEL
 class City(models.Model):
@@ -24,6 +28,8 @@ class City(models.Model):
     def __str__(self):
         return self.name
 
+
+
 # --- POST MODEL
 class Post(models.Model):
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
@@ -31,7 +37,6 @@ class Post(models.Model):
     title = models.CharField(max_length=50)
     content = models.TextField(max_length=5000)
     created = models.DateTimeField(auto_now_add=True)
-    # date = models.DateTimeUTCField('Post Date') /// crashed the server
 
     def __str__(self):
         return self.title

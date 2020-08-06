@@ -6,13 +6,20 @@ from django.contrib.auth import login
 from .models import Profile, Post, City
 from .forms import ProfileForm, CityForm, PostForm
 
-# Define the home view
 
+
+
+# ___________    Home Route  __________
 @login_required
 def home(request):
   HttpResponse('home')
 
 
+
+
+
+
+# ___________    Sign Up Route  __________
 def signup(request):
   error = None
   form = UserCreationForm()
@@ -21,19 +28,16 @@ def signup(request):
     'error': error,
   }
   if request.method == 'POST':
-    #create instance of form
+
     form = UserCreationForm(request.POST)
     if form.is_valid():
         user = form.save()
         login(request, user)
         print(user.id)
-        ###
+
         user_profile = Profile.objects.create(user=user)
         user_profile.save()
         print(user_profile)
-
-        # user_profile.save(commit=false)
-        # user_profile.user(user)
         
         print('elif block hit')
         return redirect('signup')
@@ -42,10 +46,18 @@ def signup(request):
   else:
     return render(request, 'home.html', context)
 
+
+
+
+# ___________    City Detail Route  __________
 @login_required
 def city_detail(request):
   return render(request, 'city/detail.html')
 
+
+
+
+# ___________    Profile Route  __________
 @login_required
 def profile(request):
   current_user = request.user
@@ -68,6 +80,11 @@ def profile(request):
 
     return render(request, 'registration/profile.html', context)
 
+
+
+
+
+# ___________    Post Detail Route  __________
 def post_detail(request, post_id):
   post = Post.objects.get(id=post_id)
   profile = Profile.objects.get(id=post.profile_id)
