@@ -28,6 +28,11 @@ urlpatterns = [
     # ___________    Post Show Page  __________
     path('post/<int:post_id>', views.post_detail, name = 'post_detail'),
 
+    # ___________    Post Edit Page  __________
+    path('post/<int:post_id>/edit', views.post_edit, name = 'post_edit'),
+
+    # ___________    Post Delete Page  __________
+    path('post/<int:post_id>/delete', views.post_delete, name = 'post_delete'),
 
 
 ]

@@ -6,7 +6,7 @@
     <div class="card">
         <header class="card-header">
             <p class="card-header-title title">
-                {{post.title}}
+                Edit Post
             </p>
         </header>
                 <p class="subtitle ml-6 mt-3">
@@ -18,21 +18,16 @@
                 </p>
         <div class="card-content">
             <div class="content">
-                <p>
-                    {{post.content}}
-                </p>
+                <form method="post" action="{% url 'city_index' post.city_id %}">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    </section>
+                    <footer class="modal-card-foot">
+                        <button type="submit" class="button is-success" value="login">Save changes</button>
+                </form>
             </div>
         </div>
-        <div class="card-footer">
-            <a href="{% url 'post_edit' post.id%}" class="card-footer-item is-5">
-                Edit
-            </a>
-            <a href="{% url 'post_delete' post.id %}" class="card-footer-item is-5">
-                Delete
-            </a>
-        </div>
       </div>
-
 </div>
 
 

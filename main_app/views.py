@@ -108,3 +108,25 @@ def post_detail(request, post_id):
     profile = Profile.objects.get(id=post.profile_id)
 
     return render(request, 'post_detail.html', {'post': post, 'profile': profile})
+
+
+def post_edit(request, post_id):
+  post = Post.objects.get(id=post_id)
+
+
+  if request.method == 'POST':
+    form = PostForm(request.POST, instance=post)
+    if form.is_valid():
+      new_post = form.save()
+      return redirect('city_index', post.city_id)
+
+  else:
+    form = PostForm(instance = post)
+    return render(request, 'post_edit.html', {'post': post, 'form': form})
+
+def post_delete(request, post_id):
+  post = Post.objects.get(id = post_id)
+  city = post.city_id
+
+  Post.objects.get(id=post_id).delete()
+  return redirect('city_index', city)
