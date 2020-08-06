@@ -2,120 +2,21 @@
 {% block content %}
 
     <section class="section">
-      <div class="container is-clipped">
-        <div id="slider">
-          <div class="card">
-            <div class="card-image">
-              <figure class="image is-16by9 is-covered">
-                <img
-                  src="https://images.unsplash.com/photo-1550921082-c282cdc432d6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"
-                  alt=""
-                />
-              </figure>
-            </div>
-            <div class="card-content">
-              <div class="item__title">
-                Mon titre 1
-              </div>
-              <div class="item__description">
-                Ici une petite description pour tester le slider
-              </div>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card-image">
-              <figure class="image is-16by9 is-covered">
-                <img
-                  src="https://images.unsplash.com/photo-1550945771-515f118cef86?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
-                  alt=""
-                />
-              </figure>
-            </div>
-            <div class="card-content">
-              <div class="item__title">
-                Mon titre 2
-              </div>
-              <div class="item__description">
-                Ici une petite description pour tester le slider
-              </div>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card-image">
-              <figure class="image is-16by9 is-covered">
-                <img
-                  src="https://images.unsplash.com/photo-1550971264-3f7e4a7bb349?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"
-                  alt=""
-                />
-              </figure>
-            </div>
-            <div class="card-content">
-              <div class="item__title">
-                Mon titre 3
-              </div>
-              <div class="item__description">
-                Ici une petite description pour tester le slider
-              </div>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card-image">
-              <figure class="image is-16by9 is-covered">
-                <img
-                  src="https://images.unsplash.com/photo-1550931937-2dfd45a40da0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"
-                  alt=""
-                />
-              </figure>
-            </div>
-            <div class="card-content">
-              <div class="item__title">
-                Mon titre 4
-              </div>
-              <div class="item__description">
-                Ici une petite description pour tester le slider
-              </div>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card-image">
-              <figure class="image is-16by9 is-covered">
-                <img
-                  src="https://images.unsplash.com/photo-1550930516-af8b8cc4f871?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
-                  alt=""
-                />
-              </figure>
-            </div>
-            <div class="card-content">
-              <div class="item__title">
-                Mon titre 5
-              </div>
-              <div class="item__description">
-                Ici une petite description pour tester le slider
-              </div>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card-image">
-              <figure class="image video-container is-16by9">
-                <iframe type="text/html" src="https://www.youtube.com/embed/H0v773vKS_U" frameborder="0"></iframe>
-              </figure>
-            </div>
-            <div class="card-content">
-              <div class="item__title">
-                Mon titre 6
-              </div>
-              <div class="item__description">
-                Ici une petite description pour tester le slider
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+                <div class="container">
+                    <!-- Start Carousel -->
+                    <div id="carousel-demo" class="carousel">
+                        <div class="item-1">
+                            <img src="https://picsum.photos/800" alt="pic1">
+                        </div>
+                        <div class="item-2">
+                            <img src="https://picsum.photos/800" alt="pic1">
+                        </div>
+                        <div class="item-3">
+                            <img src="https://picsum.photos/800" alt="pic1">
+                        </div>
+                    </div>
+                    <!-- End Carousel -->
+                </div>
     </section>
 
     <section class="about">
@@ -209,18 +110,23 @@
 
 
 <!-- Login Modal -->
-<div class="modal" id="sign-in-modal">
+<div class="modal is-active" id="sign-in-modal">
   <div class="modal-background"></div>
   <div class="modal-card">
     <header class="modal-card-head">
       <p class="modal-card-title">SIGN IN</p>
-
+      <!-- <button class="delete" aria-label="close"></button> -->
     </header>
     <section class="modal-card-body">
       <p>THIS IS SIGN IN FORM</p>
-    </section>
-    <footer class="modal-card-foot">
-      <button class="button is-success">Save changes</button>
+    <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="hidden" name="next" value="{{ next }}">
+        </section>
+        <footer class="modal-card-foot">
+            <button type="submit" class="button is-success" value="login">Save changes</button>
+    </form>
       <button id="cancel-sign-in" class="button">Cancel</button>
     </footer>
   </div>
@@ -232,7 +138,7 @@
   <div class="modal-card">
     <header class="modal-card-head">
       <p class="modal-card-title">SIGN UP</p>
-
+      <!-- <button class="delete" aria-label="close"></button> -->
     </header>
       <section class="modal-card-body">
         <p>THIS IS SIGN UP FORM</p>
@@ -250,15 +156,6 @@
 </div>
 
 <script>
-
-  //carousel
-  bulmaCarousel.attach('#slider', {
-    slidesToScroll: 1,
-    slidesToShow: 3,
-    infinite: true,
-  });
-
-
   // Sign In Modal DOM manipulation
   const signIn = document.getElementById('signin');
   const modalSignIn = document.getElementById('sign-in-modal');
