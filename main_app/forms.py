@@ -10,7 +10,7 @@ class ProfileForm(forms.ModelForm):
 class CityForm(forms.ModelForm):
     class Meta:
         model = City
-        fields = ['name', 'image']
+        fields = ['name', 'country','image']
 
 
 class PostForm(forms.ModelForm):

@@ -10,11 +10,15 @@ class Profile(models.Model):
     city = models.CharField(max_length=50, default='default city')
     image = models.CharField(max_length=1000, default='default_image.jpg')
     display_name = models.CharField(max_length=100, default='display name')
+
+    def __str__(self):
+        return self.display_name
     
 
 #  --- CITY MODEL
 class City(models.Model):
     name = models.CharField(max_length=50)
+    country = models.CharField(max_length=50)
     image = models.CharField(max_length=1000)
 
     def __str__(self):
@@ -28,6 +32,9 @@ class Post(models.Model):
     content = models.TextField(max_length=5000)
     created = models.DateTimeField(auto_now_add=True)
     # date = models.DateTimeUTCField('Post Date') /// crashed the server
+
+    def __str__(self):
+        return self.title
 
 
 

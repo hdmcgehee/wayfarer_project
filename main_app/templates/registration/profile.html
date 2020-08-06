@@ -14,7 +14,7 @@
             
             {% load static %}
             <img src="https://undark.org/wp-content/uploads/2020/02/GettyImages-1199242002-1-scaled.jpg" width='300' alt="">
-            
+            {% comment %} <img src="{% static 'images/rommel.png' %}" alt="My image"> {% endcomment %}
             <p class = 'title'>{{profile.display_name}}</p>
             <p>{{user.date_joined}}</p>
             <p>{{profile.city}}</p>
