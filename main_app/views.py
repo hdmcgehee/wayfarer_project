@@ -50,33 +50,30 @@ def city_detail(request):
 # ___________    City Index Route  __________
 @login_required
 def city_index(request, city_id):
-  city = City.objects.get(id=city_id)
-  current_user = request.user
-  id = current_user.id
-  profile = Profile.objects.get(user=id)
-  if request.method == 'POST':
-     form = PostForm(request.POST)
-     if form.is_valid():
-        new_post = form.save(commit = False)
-        new_post.city_id = city_id
-        new_post.profile_id = profile.id
-        new_post.save()
+    cities = City.objects.all()
+    city = City.objects.get(id=city_id)
+    current_user = request.user
+    id = current_user.id
+    profile = Profile.objects.get(user=id)
+    if request.method == 'POST':
+        form = PostForm(request.POST)
+        if form.is_valid():
+            new_post = form.save(commit = False)
+            new_post.city_id = city_id
+            new_post.profile_id = profile.id
+            new_post.save()
 
         return redirect('city_index', city_id)
 
-     context = {
-       'city': city,
-     }
+    else:
+        form = PostForm()
 
-    
-  else:
-    form = PostForm()
-
-    context = {
-      'city': city,
-      'form': form
-    }
-    return render(request, 'city/city.html', context)
+        context = {
+            'city': city,
+            'form': form,
+            'cities': cities
+        }
+        return render(request, 'city/city.html', context)
 
 
 # ___________    Profile Route  __________
