@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="columns">
+    <div class="column is-one-third mt-6"> 
+        <div class="cities">
+            <div class="card">
+                <div class="card-content">
+                    <div class="media">
+                        <div class="media-left">
+                            <figure class="image is-48x48">
+                                <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+                            </figure>
+                        </div>
+                        <div class="media-content">
+                            <p class="title is-4">London</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-content">
+                <div class="media">
+                    <div class="media-left">
+                        <figure class="image is-48x48">
+                            <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+                        </figure>
+                    </div>
+                    <div class="media-content">
+                        <p class="title is-4">{{city.name}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-content">
+                <div class="media">
+                    <div class="media-left">
+                        <figure class="image is-48x48">
+                            <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+                        </figure>
+                    </div>
+                    <div class="media-content">
+                        <p class="title is-4">London</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+
+    <div class="column is-two-thirds mt-6">
+        <div class="columns is-mobile">
+            <div class="column">
+                <p class="bd-notification is-info"></p>
+                <h1 class="is-1 title">{{city.name}}</h1>
+                <h2 class="is-2 subtitle">{{city.country}}</h2>
+            </div>
+            <div class="column">
+                <p class="bd-notification is-info"></p>
+                <img src="{{city.image}}"
+                alt="" width="500">
+            </div>
+        </div>
+
+
+        <div class="posts">
+            <h2>POSTS</h2>
+
+            {% for post in city.post_set.all %}
+            <div class="card">
+                <div class="card-content">
+                    <div class="media">
+                        <div class="media-left">
+                            <figure class="image is-48x48">
+                                <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+                            </figure>
+                        </div>
+                        <div class="media-content">
+                            <p class="title is-4">{{post.title}}</p>
+                            <p class="subtitle is-5">{{post.profile}}</p>
+                        </div>
+                    </div>
+                    <div class="content">
+                        {{post.content}}
+                        <br>
+                        {{post.created}}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+           
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

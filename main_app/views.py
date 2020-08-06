@@ -55,6 +55,17 @@ def city_detail(request):
   return render(request, 'city/detail.html')
 
 
+# ___________    City Index Route  __________
+@login_required
+def city_index(request, city_id):
+  city = City.objects.get(id = city_id)
+  context = {
+    'city': city,
+  }
+
+  return render(request, 'city/city.html', context)
+
+
 
 
 # ___________    Profile Route  __________
