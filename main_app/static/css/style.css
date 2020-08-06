@@ -1,4 +1,6 @@
-
+* {
+  font-family: 'Archivo Narrow', sans-serif;
+}
 
 body {
   display: flex;
@@ -11,15 +13,13 @@ main {
 }
 
 .hero {
-  /* background-color: #842697; */
   background-color: #1565ba;
   color: white;
-
 } 
 
 .card-header-title,
 .card-header-icon {
-  background-color: #358Ce7;
+  background-color: #79B3EF;
   color: white;
 }
 
@@ -29,11 +29,25 @@ main {
 }
 
 .footer {
-    background-color: #358Ce7;
+  background-color: #1565ba;
     padding: 10px;
     color: white;
 }
-* {
-  background-color: #02353C #449342 #2EAF7D #3FD0C9 #C1F6ED
 
+.title {
+  font-family: 'Abril Fatface', cursive;
+  letter-spacing: 5px;
+}
+
+.recent_posts {
+  max-width: 500px;
+}
+
+.postlink {
+  text-decoration: none;
+  color: white;
+}
+
+.post_holder {
+  max-width: 600px;
 }

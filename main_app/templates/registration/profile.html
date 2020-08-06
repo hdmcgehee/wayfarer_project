@@ -10,11 +10,8 @@
 
           <figure>
             
-            <h1>This is a profile page</h1>
-            
             {% load static %}
-            <img src="https://undark.org/wp-content/uploads/2020/02/GettyImages-1199242002-1-scaled.jpg" width='300' alt="">
-            {% comment %} <img src="{% static 'images/rommel.png' %}" alt="My image"> {% endcomment %}
+            <img src="{{profile.image}}" width="300" alt="My image">
             <p class = 'title'>{{profile.display_name}}</p>
             <p>{{user.date_joined}}</p>
             <p>{{profile.city}}</p>
@@ -25,7 +22,7 @@
         </div>
 
         <div class="columns">
-          <div class="card mx-6 my-6">
+          <div class="card mx-6 my-6 recent_posts">
             <h1 class="title is-1 mx-6 my-6">Recent Posts</h1>
  
             {% for post in profile.post_set.all %}
@@ -33,7 +30,7 @@
             <div>
               <header class="card-header">
                 <p class="card-header-title">
-                  <a href="{% url 'post_detail' post.id%}">
+                  <a class="postlink" href="{% url 'post_detail' post.id%}">
                     {{post.title}}
                   </a>
                 </p>
