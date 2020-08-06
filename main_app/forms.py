@@ -15,5 +15,5 @@ class CityForm(forms.ModelForm):
 
 class PostForm(forms.ModelForm):
     class Meta:
-        model: Post
+        model = Post
         fields = ['title', 'content']
