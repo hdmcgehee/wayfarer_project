@@ -85,7 +85,9 @@
                             </figure>
                         </div>
                         <div class="media-content">
-                            <p class="title is-4">{{post.title}}</p>
+                            <a href="{% url 'post_detail' post.id %}">
+                                <p class="title is-4">{{post.title}}</p>
+                            </a>
                             <p class="subtitle is-5">{{post.profile}}</p>
                         </div>
                     </div>
@@ -93,6 +95,15 @@
                         {{post.content}}
                         <br>
                         {{post.created}}
+                    </div>
+
+                    <div class="card-footer">
+                        <a href="{% url 'post_edit' post.id%}" class="card-footer-item is-5">
+                            Edit
+                        </a>
+                        <a href="{% url 'post_delete' post.id %}" class="card-footer-item is-5">
+                            Delete
+                        </a>
                     </div>
                 </div>
             </div>
