@@ -27,9 +27,32 @@
             <a href="{% url 'post_edit' post.id%}" class="card-footer-item is-5">
                 Edit
             </a>
-            <a href="{% url 'post_delete' post.id %}" class="card-footer-item is-5">
+            <a href="#" class="card-footer-item is-5" id="delete-link-{{post.id}}">
                 Delete
             </a>
+            <div class="modal" id="delete-modal-{{post.id}}">
+                <div class="modal-background"></div>
+                <div class="modal-card">
+                    <div class="modal-card-head"></div>
+                    <div class="modal-card-body">
+                        <p class="is-3"> Are you sure you want to Delete <span style="font-weight:bold;">{{post.title}}</span> ?</p>
+                        <a href="{% url 'post_delete' post.id %}">
+                            Delete
+                        </a>
+                        <a href="#" id="cancel-delete-{{post.id}}">
+                            Cancel
+                        </a>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <script>
+                const deleteButton{{post.id}} = document.getElementById('delete-link-{{post.id}}');
+                const deleteModal{{post.id}} = document.getElementById('delete-modal-{{post.id}}');
+                const cancelDelete{{post.id}} = document.getElementById('cancel-delete-{{post.id}}');
+                deleteButton{{post.id}}.addEventListener("click", () => { deleteModal{{post.id}}.classList.add('is-active') })
+                cancelDelete{{post.id}}.addEventListener("click", () => { deleteModal{{post.id}}.classList.remove('is-active') })
+            </script>
         </div>
       </div>
 
