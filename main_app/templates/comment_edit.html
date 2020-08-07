@@ -63,13 +63,25 @@
 <hr>
 
 <!-- COMMENT TEXTAREA -->
-<div>
-    <h3 class="is-3">Comment</h3>
-    <form action="" method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button class="button is-info" type="submit">Comment</button>
-    </form>
+
+<div class="modal is-active">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+        <header class="modal-card-head">
+            <p class="modal-card-title">Edit Comment</p>
+            <!-- <button class="delete" aria-label="close"></button> -->
+        </header>
+        <section class="modal-card-body">
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+        </section>
+        <footer class="modal-card-foot">
+            <button type="submit" class="button is-success">Save Changes</button>
+            </form>
+            <a href="{% url 'post_detail' post.id %}"><button class="button">Cancel</button></a>
+        </footer>
+    </div>
 </div>
 
 
@@ -93,7 +105,7 @@
                 <a href="{% url 'comment_edit' comment.id %}" class="card-footer-item is-5">
                     Edit
                 </a>
-                <a href="{% url 'comment_delete' comment.id %}" class="card-footer-item is-5" id="delete-link-{{post.id}}">
+                <a href="#" class="card-footer-item is-5" id="delete-link-{{post.id}}">
                     Delete
                 </a>
             </div>

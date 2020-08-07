@@ -29,4 +29,14 @@ urlpatterns = [
     # __________________    POST DELETE   _________________
     path('post/<int:post_id>/delete', views.post_delete, name = 'post_delete'),
 
+
+
+    # __________________    COMMENT EDIT   _________________
+    path('comment/<int:comment_id>/edit', views.comment_edit, name='comment_edit'),
+
+
+    # __________________    COMMENT DELETE   _________________
+    path('comment/<int:comment_id>/delete', views.comment_delete, name= 'comment_delete')
+
+
 ]
