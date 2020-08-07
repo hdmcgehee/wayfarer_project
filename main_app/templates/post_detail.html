@@ -2,7 +2,6 @@
 {% block content %}
 
 <div class='post_holder container is-centered mt-6'>
-
     <div class="card">
         <header class="card-header">
             <p class="card-header-title title">
@@ -30,6 +29,7 @@
             <a href="#" class="card-footer-item is-5" id="delete-link-{{post.id}}">
                 Delete
             </a>
+<!-- MODAL FOR DELETE CONFIRMATION -->
             <div class="modal" id="delete-modal-{{post.id}}">
                 <div class="modal-background"></div>
                 <div class="modal-card">
@@ -44,18 +44,17 @@
                         </a>
                     </div>
                 </div>
-                </div>
             </div>
-            <script>
-                const deleteButton{{post.id}} = document.getElementById('delete-link-{{post.id}}');
-                const deleteModal{{post.id}} = document.getElementById('delete-modal-{{post.id}}');
-                const cancelDelete{{post.id}} = document.getElementById('cancel-delete-{{post.id}}');
-                deleteButton{{post.id}}.addEventListener("click", () => { deleteModal{{post.id}}.classList.add('is-active') })
-                cancelDelete{{post.id}}.addEventListener("click", () => { deleteModal{{post.id}}.classList.remove('is-active') })
-            </script>
         </div>
-      </div>
-
+<!-- JS FOR DELETE CONFIRMATION -->
+        <script>
+            const deleteButton{{post.id}} = document.getElementById('delete-link-{{post.id}}');
+            const deleteModal{{post.id}} = document.getElementById('delete-modal-{{post.id}}');
+            const cancelDelete{{post.id}} = document.getElementById('cancel-delete-{{post.id}}');
+            deleteButton{{post.id}}.addEventListener("click", () => { deleteModal{{post.id}}.classList.add('is-active') })
+            cancelDelete{{post.id}}.addEventListener("click", () => { deleteModal{{post.id}}.classList.remove('is-active') })
+        </script>
+    </div>
 </div>
 
 
