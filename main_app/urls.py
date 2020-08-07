@@ -8,14 +8,15 @@ urlpatterns = [
 
 
     # __________________    USER PROFILE  _________________
-    path('profile/', views.profile, name = 'profile'),
+    path('profile/<int:profile_id>', views.profile, name = 'profile'),
+
+    path('profile/', views.user_profile, name = 'user_profile'),
 
 
 
     # __________________    CITY INDEX    _________________
     path('city/<int:city_id>', views.city_index, name = 'city_index'),
     
-
 
 
 
@@ -28,13 +29,4 @@ urlpatterns = [
     # __________________    POST DELETE   _________________
     path('post/<int:post_id>/delete', views.post_delete, name = 'post_delete'),
 
-
-
-
-
-    # __________________    HOME          _________________
-    path('home/', views.home, name='home'),
-
-    # __________________    CITY DETAIL   _________________
-    path('city/', views.city_detail, name = 'city_detail'),
 ]

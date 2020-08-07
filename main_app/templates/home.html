@@ -119,7 +119,7 @@
     </section>
 
     <section class="about">
-        <h2>Wayfarer is...</h2>
+        <h2 class="is-6 mb-6 ml-6">Wayfarer is a dank app for travel discussion </h2>
     </section>
 
     <section>
@@ -207,6 +207,22 @@
 		});
 		</script>
 
+<!-- error modal -->
+<div class="modal" id="error-modal">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Error</p>
+
+    </header>
+    <section class="modal-card-body">
+      <p>{{error}}</p>
+    </section>
+    <footer class="modal-card-foot">
+      <button id="okay" class="button">Okay</button>
+    </footer>
+  </div>
+</div>
 
 <!-- Login Modal -->
 <div class="modal" id="sign-in-modal">
@@ -273,6 +289,14 @@
   signUp.addEventListener("click",()=>{modalSignUp.classList.add('is-active')});
   cancelSignUp.addEventListener("click",()=>{modalSignUp.classList.remove('is-active')});
 
+
+  const errorModal = document.getElementById('error-modal');
+  const okay = document.getElementById('okay');
+  okay.addEventListener("click",()=>{errorModal.classList.remove('is-active')});
+
+  {% if error %}
+    errorModal.classList.add('is-active');
+  {% endif%}
 </script>
 
 

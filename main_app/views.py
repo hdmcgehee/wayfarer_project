@@ -41,31 +41,46 @@ def signup(request):
             print('elif block hit')
             return redirect('signup')
         else:
-            return redirect('signup')
+          context['error'] = 'username taken'
+          return render(request, 'home.html', context)
     else:
         return render(request, 'home.html', context)
 
 # ________________    Profile Route  ______________________
 @login_required
-def profile(request):
+def profile(request, profile_id):
     current_user = request.user
     id = current_user.id
-    profile = Profile.objects.get(user=id)
+    current_profile = Profile.objects.get(user=id)
+    this_profile = Profile.objects.get(id = profile_id)
     # POST METHOD
     if request.method == 'POST':
-        form = ProfileForm(request.POST, instance=profile)
+        form = ProfileForm(request.POST, instance=current_profile)
         if form.is_valid():
-            profile = form.save()
-            return redirect('profile')
+            current_profile = form.save()
+            return redirect('profile', profile_id)
     # GET METHOD
     else:
-        form = ProfileForm(instance=profile)
+        form = ProfileForm(instance=current_profile)
         context = {
-            'profile': profile,
+            'current_profile': current_profile,
+            'this_profile': this_profile,
             'form': form
         }
 
         return render(request, 'registration/profile.html', context)
+
+
+# ________________   User Profile Route  ____________________
+
+@login_required
+def user_profile(request):
+  current_user = request.user
+  id = current_user.id
+  profile = Profile.objects.get(user=id)
+
+  return redirect('profile', profile.id)
+
 
 # _________________________________________________________
 # ___________________     CITY     ________________________
@@ -94,7 +109,8 @@ def city_index(request, city_id):
         context = {
             'city': city,
             'form': form,
-            'cities': cities
+            'cities': cities,
+            'profile': profile,
         }
         return render(request, 'city/city.html', context)
 
@@ -103,16 +119,21 @@ def city_index(request, city_id):
 # __________________________________________________________
 
 # ________________     Post Detail    _____________________
+@login_required
 def post_detail(request, post_id):
     post = Post.objects.get(id=post_id)
     profile = Profile.objects.get(id=post.profile_id)
+    user = request.user
+    current_profile = Profile.objects.get(user_id=user.id)
     context = {
         'post': post, 
-        'profile': profile
+        'profile': profile,
+        'current_profile': current_profile
     }
     return render(request, 'post_detail.html', context)
 
 # _________________     Post EDIT   _______________________
+@login_required
 def post_edit(request, post_id):
     post = Post.objects.get(id=post_id)
     # POST METHOD
@@ -127,24 +148,10 @@ def post_edit(request, post_id):
         return render(request, 'post_edit.html', {'post': post, 'form': form})
 
 # _______________      Post DELETE   ______________________
+@login_required
 def post_delete(request, post_id):
   post = Post.objects.get(id = post_id)
   city_id = post.city_id
   Post.objects.get(id=post_id).delete()
   return redirect('city_index', city_id)
 
-
-# _________________________________________________________
-# ___________________     TBD     _________________________
-# _________________________________________________________
-
-
-# ________________    Home Route     ______________________ OLD
-@login_required
-def home(request):
-    HttpResponse('home')
-
-# ___________      City Detail Route   _____________________OLD
-@login_required
-def city_detail(request):
-    return render(request, 'city/detail.html')
