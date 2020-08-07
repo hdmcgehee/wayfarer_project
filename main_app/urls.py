@@ -6,6 +6,9 @@ urlpatterns = [
     # __________________    SIGNUP        _________________
     path('', views.signup, name='signup'),
 
+    # __________________    About        _________________
+    path('about/', views.about, name='about'),
+
 
     # __________________    USER PROFILE  _________________
     path('profile/<int:profile_id>', views.profile, name = 'profile'),
