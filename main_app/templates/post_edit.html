@@ -23,8 +23,10 @@
                     {{ form.as_p }}
                     </section>
                     <footer class="modal-card-foot">
-                        <button type="submit" class="button is-success" value="login">Save changes</button>
-                </form>
+                        <button type="submit" class="button is-success">Save changes</button>
+                    </form>
+                        <a class="button is-link" href="{% url 'post_detail' post.id %}">Cancel</a>
+
             </div>
         </div>
       </div>
