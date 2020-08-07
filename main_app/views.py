@@ -41,7 +41,8 @@ def signup(request):
             print('elif block hit')
             return redirect('signup')
         else:
-            return redirect('signup')
+          context['error'] = 'username taken'
+          return render(request, 'home.html', context)
     else:
         return render(request, 'home.html', context)
 
@@ -94,7 +95,8 @@ def city_index(request, city_id):
         context = {
             'city': city,
             'form': form,
-            'cities': cities
+            'cities': cities,
+            'profile': profile,
         }
         return render(request, 'city/city.html', context)
 
@@ -106,9 +108,12 @@ def city_index(request, city_id):
 def post_detail(request, post_id):
     post = Post.objects.get(id=post_id)
     profile = Profile.objects.get(id=post.profile_id)
+    user = request.user
+    current_profile = Profile.objects.get(user_id=user.id)
     context = {
         'post': post, 
-        'profile': profile
+        'profile': profile,
+        'current_profile': current_profile
     }
     return render(request, 'post_detail.html', context)
 

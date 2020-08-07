@@ -22,6 +22,7 @@
                 </p>
             </div>
         </div>
+        {% if post.profile_id == current_profile.id %}
         <div class="card-footer">
             <a href="{% url 'post_edit' post.id%}" class="card-footer-item is-5">
                 Edit
@@ -57,5 +58,5 @@
     </div>
 </div>
 
-
+        {% endif %}
 {% endblock %}
