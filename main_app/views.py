@@ -46,6 +46,17 @@ def signup(request):
     else:
         return render(request, 'home.html', context)
 
+
+
+
+# ________________    About Route  ______________________
+def about(request):
+
+    return render(request, 'about.html')
+
+
+
+
 # ________________    Profile Route  ______________________
 @login_required
 def profile(request, profile_id):
