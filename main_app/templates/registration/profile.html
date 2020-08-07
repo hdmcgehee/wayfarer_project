@@ -13,8 +13,17 @@
             {% load static %}
             <img src="{{this_profile.image}}" width="300" alt="My image">
             <p class = 'title'>{{this_profile.display_name}}</p>
-            <p>{{user.date_joined}}</p>
             <p>{{this_profile.city}}</p>
+            <hr>
+            <p>
+              Posts: {{current_profile.post_set.all | length}}
+            </p>
+            <p>
+              Comments: {{current_profile.comment_set.all | length}}
+            </p>
+            <p>Joined: {{user.date_joined}}</p>
+
+            <hr>
             {% if current_profile.id == this_profile.id %}
             <button class='button' id = 'edit-button'>Edit Profile</button>
             {%endif%}
