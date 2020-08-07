@@ -65,9 +65,11 @@
 
 
         <div class="posts">
-            <h2>POSTS</h2>
+            <button class="button is-success is-pulled-right mr-6" id="add-post">Add Post</button>
+            <br>
+            <hr>
 
-            <button class="button" id="add-post">Add Post</button>
+
 
             {% for post in city.post_set.all %}
             <div class="card">
