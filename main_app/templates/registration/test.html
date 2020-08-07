@@ -1,0 +1,34 @@
+
+
+<button class="button" id="add-post">Add Post</button>
+
+<!-- New Post Modal -->
+<div class="modal" id="post-modal">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">New Post</p>
+      <!-- <button class="delete" aria-label="close"></button> -->
+    </header>
+      <section class="modal-card-body">
+        <p>This is the New Post Form</p>
+      <form action="" method="POST">
+          {% csrf_token %}
+          {{ form.as_p }}
+        
+      </section>
+      <footer class="modal-card-foot">
+      <button type="submit" class="button is-success">Add Post</button>
+      </form>
+      <button id="cancel-post" class="button">Cancel</button>
+    </footer>
+  </div>
+</div>
+
+<script>
+  const addPost = document.getElementById('add-post');
+  const postModal = document.getElementById('post-modal');
+  const cancelPost = document.getElementById('cancel-post');
+  addPost.addEventListener("click",()=>{postModal.classList.add('is-active')})
+  cancelPost.addEventListener("click",()=>{postModal.classList.remove('is-active')})
+</script>

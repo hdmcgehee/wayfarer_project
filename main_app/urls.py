@@ -3,27 +3,38 @@ from . import views
 
 urlpatterns = [
     
-    
-    # ___________    HOME      ____________
-    path('home/', views.home, name='home'),
-
-
-    # _____________  AUTH  _______________
-
-    
-    # ___________    SIGNUP      _________
+    # __________________    SIGNUP        _________________
     path('', views.signup, name='signup'),
 
 
-    # ___________    CITY DETAIL    _________
-    path('city/', views.city_detail, name = 'city_detail'),
-
-    # ___________    USER PROFILE  __________
+    # __________________    USER PROFILE  _________________
     path('profile/', views.profile, name = 'profile'),
 
-    # ___________    Post Show Page  __________
+
+
+    # __________________    CITY INDEX    _________________
+    path('city/<int:city_id>', views.city_index, name = 'city_index'),
+    
+
+
+
+
+    # __________________    POST DETAIL   _________________
     path('post/<int:post_id>', views.post_detail, name = 'post_detail'),
 
+    # __________________    POST Edit     _________________
+    path('post/<int:post_id>/edit', views.post_edit, name = 'post_edit'),
+
+    # __________________    POST DELETE   _________________
+    path('post/<int:post_id>/delete', views.post_delete, name = 'post_delete'),
 
 
+
+
+
+    # __________________    HOME          _________________
+    path('home/', views.home, name='home'),
+
+    # __________________    CITY DETAIL   _________________
+    path('city/', views.city_detail, name = 'city_detail'),
 ]

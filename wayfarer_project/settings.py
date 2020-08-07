@@ -120,7 +120,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+##___________   ACCOUNT REDIRECTS   ___________ 
+
 LOGIN_REDIRECT_URL = '/profile'
-# LOGIN_REDIRECT_URL = 'account/profile'
 
 LOGOUT_REDIRECT_URL = '/'
