@@ -70,8 +70,9 @@
                                 <p class="title is-4">{{post.title}}</p>
                             </a>
                             <a href="{% url 'profile' post.profile_id %}">
-                                <p class="subtitle is-5">{{post.profile}}</p>
-
+                                <p class="subtitle is-5" onmouseover="this.style.color='#79B3EF'"
+                                onmouseout="this.style.color='black'">{{post.profile}}</p>
+                                
                             </a>
                         </div>
                     </div>
@@ -156,6 +157,7 @@
     const cancelPost = document.getElementById('cancel-post');
     addPost.addEventListener("click", () => { postModal.classList.add('is-active') })
     cancelPost.addEventListener("click", () => { postModal.classList.remove('is-active') })
+
 </script>
 
 
