@@ -20,11 +20,15 @@ from .forms import ProfileForm, CityForm, PostForm, CommentForm
 
 # ________________   Sign Up Route    _____________________
 def signup(request):
+    cities = City.objects.all()
+    posts = Post.objects.all()
     error = None
     form = UserCreationForm()
     context = {
         'form': form,
         'error': error,
+        'cities': cities,
+        'posts': posts,
     }
     if request.method == 'POST':
 
@@ -45,6 +49,17 @@ def signup(request):
             return render(request, 'home.html', context)
     else:
         return render(request, 'home.html', context)
+
+
+
+
+# ________________    About Route  ______________________
+def about(request):
+
+    return render(request, 'about.html')
+
+
+
 
 # ________________    Profile Route  ______________________
 @login_required
@@ -87,7 +102,7 @@ def user_profile(request):
 # _________________________________________________________
 
 # ________________   City Index Route  ____________________
-@login_required
+
 def city_index(request, city_id):
     cities = City.objects.all()
     city = City.objects.get(id=city_id)
