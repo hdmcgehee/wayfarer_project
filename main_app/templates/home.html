@@ -4,131 +4,59 @@
     <section class="section">
       <div class="container is-clipped">
         <div id="slider">
+
+        {% for city in cities %}
           <div class="card">
             <div class="card-image">
               <figure class="image is-16by9 is-covered">
+                
+                {% if user.is_authenticated %}
+                <a href="{% url 'city_index' city.id %}">
                 <img
-                  src="https://images.unsplash.com/photo-1550921082-c282cdc432d6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"
+                  src="{{city.image}}"
                   alt=""
                 />
-              </figure>
-            </div>
-            <div class="card-content">
-              <div class="item__title">
-                Mon titre 1
-              </div>
-              <div class="item__description">
-                Ici une petite description pour tester le slider
-              </div>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card-image">
-              <figure class="image is-16by9 is-covered">
-                <img
-                  src="https://images.unsplash.com/photo-1550945771-515f118cef86?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
+              </a>
+              {% else %}
+              <img
+                  src="{{city.image}}"
                   alt=""
                 />
-              </figure>
-            </div>
-            <div class="card-content">
-              <div class="item__title">
-                Mon titre 2
-              </div>
-              <div class="item__description">
-                Ici une petite description pour tester le slider
-              </div>
-            </div>
-          </div>
+              {% endif %}
 
-          <div class="card">
-            <div class="card-image">
-              <figure class="image is-16by9 is-covered">
-                <img
-                  src="https://images.unsplash.com/photo-1550971264-3f7e4a7bb349?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"
-                  alt=""
-                />
               </figure>
             </div>
             <div class="card-content">
-              <div class="item__title">
-                Mon titre 3
+              <div class="city.title">
+                {{city.name}}
               </div>
               <div class="item__description">
-                Ici une petite description pour tester le slider
+                {{city.country}}
               </div>
             </div>
           </div>
+        {% endfor %}
 
-          <div class="card">
-            <div class="card-image">
-              <figure class="image is-16by9 is-covered">
-                <img
-                  src="https://images.unsplash.com/photo-1550931937-2dfd45a40da0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"
-                  alt=""
-                />
-              </figure>
-            </div>
-            <div class="card-content">
-              <div class="item__title">
-                Mon titre 4
-              </div>
-              <div class="item__description">
-                Ici une petite description pour tester le slider
-              </div>
-            </div>
-          </div>
 
-          <div class="card">
-            <div class="card-image">
-              <figure class="image is-16by9 is-covered">
-                <img
-                  src="https://images.unsplash.com/photo-1550930516-af8b8cc4f871?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
-                  alt=""
-                />
-              </figure>
-            </div>
-            <div class="card-content">
-              <div class="item__title">
-                Mon titre 5
-              </div>
-              <div class="item__description">
-                Ici une petite description pour tester le slider
-              </div>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card-image">
-              <figure class="image video-container is-16by9">
-                <iframe type="text/html" src="https://www.youtube.com/embed/H0v773vKS_U" frameborder="0"></iframe>
-              </figure>
-            </div>
-            <div class="card-content">
-              <div class="item__title">
-                Mon titre 6
-              </div>
-              <div class="item__description">
-                Ici une petite description pour tester le slider
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
+
+
+
+          
     </section>
 
     <section class="about">
-        <h2 class="is-6 mb-6 ml-6">Wayfarer is a dank app for travel discussion </h2>
+        <h2 class="is-3 mb-6 ml-6">Wayfarer is community for travel discussion </h2>
     </section>
 
     <section>
+      <h3 class="title is-4 ml-6">Recent Posts...</h3>
         <div class="columns">
             <div class="column">
                 <div class="card">
                     <header class="card-header">
                       <p class="card-header-title">
-                        Topic
+                        {{posts.0.title}}
                       </p>
                       <a href="#" class="card-header-icon" aria-label="more options">
                         <span class="icon">
@@ -138,12 +66,8 @@
                     </header>
                     <div class="card-content">
                       <div class="content">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
+                        
+                      <p> {{posts.0.content}} </p>
                       </div>
                     </div>
                   </div>
@@ -152,7 +76,7 @@
                 <div class="card">
                     <header class="card-header">
                       <p class="card-header-title">
-                        Topic
+                        {{posts.1.title}}
                       </p>
                       <a href="#" class="card-header-icon" aria-label="more options">
                         <span class="icon">
@@ -162,12 +86,8 @@
                     </header>
                     <div class="card-content">
                       <div class="content">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
+                        <p> {{posts.1.content}} </p>
+ 
                       </div>
                     </div>
                   </div>
@@ -176,7 +96,7 @@
                 <div class="card">
                     <header class="card-header">
                       <p class="card-header-title">
-                        Topic
+                        {{posts.2.title}}
                       </p>
                       <a href="#" class="card-header-icon" aria-label="more options">
                         <span class="icon">
@@ -186,12 +106,7 @@
                     </header>
                     <div class="card-content">
                       <div class="content">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
+                        <p> {{posts.2.content}} </p>
                       </div>
                     </div>
                   </div>
