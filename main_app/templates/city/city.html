@@ -71,6 +71,8 @@
                         {{post.content}}
                         <br>
                         {{post.created}}
+                        Comments: {{ post.comment_set.all | length }}
+                        
                     </div>
                     {% if post.profile_id == profile.id %}
                     <div class="card-footer">
