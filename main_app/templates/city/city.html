@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
 
+        <!-- CITIES -->
 <div class="columns">
     <div class="column is-one-third mt-6">
         <div class="cities">
-            <div class="card">
-                <div class="card-content">
+            <div class="card is-primary">
+                <div class="card-content is-primary">
                     <div class="media">
                         <div class="media-left">
                             <figure class="image is-48x48">
@@ -40,14 +41,9 @@
         </a>
         {% endif %}
         {% endfor %}
-
-
-
-
     </div>
 
-
-
+            <!-- SELECTED CITY INFO -->
     <div class="column is-two-thirds mt-6">
         <div class="columns is-mobile">
             <div class="column">
@@ -61,16 +57,11 @@
             </div>
         </div>
 
-
-
-
+        <!-- CITY POSTS -->
         <div class="posts">
             <button class="button is-success is-pulled-right mr-6" id="add-post">Add Post</button>
             <br>
             <hr>
-
-
-
             {% for post in city.post_set.all %}
             <div class="card">
                 <div class="card-content">
@@ -92,7 +83,6 @@
                         <br>
                         {{post.created}}
                     </div>
-
                     <div class="card-footer">
                         <a href="{% url 'post_edit' post.id%}" class="card-footer-item is-5">
                             Edit
@@ -100,6 +90,7 @@
                         <a href="#" class="card-footer-item is-5" id="delete-link-{{post.id}}">
                             Delete
                         </a>
+                        <!-- DELETE CONFIRMATION MODAL -->
                         <div class="modal" id="delete-modal-{{post.id}}">
                             <div class="modal-background"></div>
                             <div class="modal-card">
@@ -116,6 +107,7 @@
                             </div>
                             </div>
                         </div>
+                        <!-- DELETE CONFIRMATION JS FOR MODAL -->
                         <script>
                             const deleteButton{{post.id}} = document.getElementById('delete-link-{{post.id}}');
                             const deleteModal{{post.id}} = document.getElementById('delete-modal-{{post.id}}');
@@ -133,7 +125,7 @@
     </div>
 </div>
 
-<!-- New Post Modal -->
+<!-- NEW POST MODAL -->
 <div class="modal" id="post-modal">
     <div class="modal-background"></div>
     <div class="modal-card">
@@ -155,6 +147,7 @@
     </div>
 </div>
 
+<!-- JS FOR NEW POST MODAL -->
 <script>
     const addPost = document.getElementById('add-post');
     const postModal = document.getElementById('post-modal');
