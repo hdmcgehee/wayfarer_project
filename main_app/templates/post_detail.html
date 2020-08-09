@@ -58,9 +58,8 @@
                 cancelDelete{ { post.id } }.addEventListener("click", () => { deleteModal{ { post.id } }.classList.remove('is-active') })
             </script>
         </div>
-    </div>
+            {% endif %}
 
-{% endif %}
 <hr>
 
 <!-- COMMENT TEXTAREA -->
@@ -98,11 +97,11 @@
                     Delete
                 </a>
             </div>
+            {% endif %}
         </div>
     </div>
-{% endif %}
-
 {% endfor %}
 
+    </div>
 
 {% endblock %}

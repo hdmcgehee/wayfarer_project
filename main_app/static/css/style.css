@@ -34,9 +34,14 @@ main {
     color: white;
 }
 
+
 .title {
-  font-family: 'Abril Fatface', cursive;
+  font-family: 'Archivo Black', sans-serif;
   letter-spacing: 5px;
+}
+
+.brand {
+  font-family: 'Abril Fatface', cursive;
 }
 
 .recent_posts {

@@ -14,7 +14,7 @@
             {% load static %}
             <img src="{{this_profile.image}}" width="300" alt="My image">
             <p class = 'title'>{{this_profile.display_name}}</p>
-            <p>{{this_profile.city}}</p>
+            <p class = 'subtitle'>{{this_profile.city}}</p>
             <hr>
             <p>
               Posts: {{current_profile.post_set.all | length}}
