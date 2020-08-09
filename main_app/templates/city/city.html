@@ -10,7 +10,11 @@
         {% for cit in cities %}
         
         <a href="{% url 'city_index' cit.id %}">
-            <div class="card">
+            <div class="card is-success" 
+            
+            {% if city.id == cit.id %}
+            style="background-color:#79B3EF;"
+            {% endif %}>
                 <div class="card-content">
                     <div class="media">
                         <div class="media-left">
@@ -19,7 +23,11 @@
                             </figure>
                         </div>
                         <div class="media-content">
-                            <p class="title is-4">{{cit.name}}</p>
+                            <p 
+                            {% if city.id == cit.id %}
+                            style="color:white;" 
+                            {% endif %}
+                            class="title is-4">{{cit.name}}</p>
                         </div>
                     </div>
                 </div>
@@ -54,7 +62,7 @@
                     <div class="media">
                         <div class="media-left">
                             <figure class="image is-48x48">
-                                <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+                                <img src="{{post.profile.image}}" alt="Post image">
                             </figure>
                         </div>
                         <div class="media-content">
@@ -62,8 +70,9 @@
                                 <p class="title is-4">{{post.title}}</p>
                             </a>
                             <a href="{% url 'profile' post.profile_id %}">
-                                <p class="subtitle is-5">{{post.profile}}</p>
-
+                                <p class="subtitle is-5" onmouseover="this.style.color='#79B3EF'"
+                                onmouseout="this.style.color='black'">{{post.profile}}</p>
+                                
                             </a>
                         </div>
                     </div>
@@ -71,6 +80,8 @@
                         {{post.content}}
                         <br>
                         {{post.created}}
+                        Comments: {{ post.comment_set.all | length }}
+                        
                     </div>
                     {% if post.profile_id == profile.id %}
                     <div class="card-footer">
@@ -146,6 +157,7 @@
     const cancelPost = document.getElementById('cancel-post');
     addPost.addEventListener("click", () => { postModal.classList.add('is-active') })
     cancelPost.addEventListener("click", () => { postModal.classList.remove('is-active') })
+
 </script>
 
 

@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+    <h1 class="is-1 title mt-6 mb-6 has-text-centered">Our Team</h1>
+
+
+    <section class="mt-6">
+        <div class="columns">
+            <div class="column">
+                <div class="card">
+                    <figure class="image">
+                    {% load static %}
+                        <img src="{% static 'images/rommel.png' %}" alt="Placeholder image">
+                    </figure>
+                    <header class="card-header">
+                      <p class="card-header-title footer">
+                        Rommel Aquino
+                      </p>
+
+                    </header>
+                    <div class="card-content">
+                      <div class="content">
+                      Oh hello. It's me Rommel.
+                      </div>
+                    </div>
+                  </div>
+            </div>
+            <div class="column">
+                <div class="card">
+                <figure class="image">
+                    {% load static %}
+                        <img src="{% static 'images/Nathan.jpg' %}" alt="Placeholder image">
+                    </figure>
+                    <header class="card-header">
+                      <p class="card-header-title footer">
+                        Nathan J Harris
+                      </p>
+
+                    </header>
+                    <div class="card-content">
+                      <div class="content">
+                        I enjoyed working on a team for this project as together we persevered through challenges and discovered new ways to develop with Django.  Through this project we all learned how to use Django on a wholistic level.  I’m grateful for our team which have made this a memorable experience.  
+                      </div>
+                    </div>
+                  </div>
+            </div>
+            <div class="column">
+                <div class="card">
+                <figure class="image">
+                    {% load static %}
+                        <img src="{% static 'images/Henry.jpeg' %}" alt="Placeholder image">
+                    </figure>
+                    <header class="card-header">
+                      <p class="card-header-title footer">
+                        Henry McGehee
+                      </p>
+
+                    </header>
+                    <div class="card-content">
+                      <div class="content">
+                        Same
+                      </div>
+                    </div>
+                  </div>
+            </div>
+          </div>
+    </section>
+
+
+{% endblock %}
