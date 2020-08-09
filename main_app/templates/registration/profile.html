@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load widget_tweaks %}
 {% block content %}
 
 
@@ -82,7 +83,9 @@
         <section class="modal-card-body">
         <form action="" method="POST">
           {% csrf_token %}
-          {{ form.as_p }}
+          {% render_field form.display_name class="input my-3" placeholder="Display Name"%}
+          {% render_field form.image class="input my-3" placeholder="Image URL"%}
+          {% render_field form.city class="input my-3" placeholder="Current City"%}
         </section>
         <footer class="modal-card-foot">
         <button type="submit" value="sign_up" class="button is-success">Save Changes</button>

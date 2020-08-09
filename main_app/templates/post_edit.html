@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load widget_tweaks %}
 {% block content %}
 
 <div class='post_holder container is-centered mt-6'>
@@ -19,7 +20,7 @@
             <div class="content">
                 <form method="post" action="{% url 'city_index' post.city_id %}">
                     {% csrf_token %}
-                    {{ form.as_p }}
+                    {% render_field form.content class="textarea" %}
                     </section>
                     <footer class="modal-card-foot">
                         <button type="submit" class="button is-success">Save changes</button>

@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load widget_tweaks %}
 {% block content %}
 
         <!-- CITIES -->
@@ -137,10 +138,11 @@
             <!-- <button class="delete" aria-label="close"></button> -->
         </header>
         <section class="modal-card-body">
-            <p>This is the New Post Form</p>
+         
             <form action="" method="POST">
                 {% csrf_token %}
-                {{ form.as_p }}
+                {% render_field form.title class="input my-3" placeholder="Title"%}
+                {% render_field form.content class="textarea my-3" placeholder="Your Comment"%}
         </section>
         <footer class="modal-card-foot">
             <button type="submit" class="button is-success">Add Post</button>
