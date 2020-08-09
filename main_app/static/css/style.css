@@ -1,5 +1,6 @@
 * {
   font-family: 'Archivo Narrow', sans-serif;
+  text-decoration: none;
 }
 
 body {
@@ -35,14 +36,6 @@ main {
 }
 
 
-.title {
-  font-family: 'Archivo Black', sans-serif;
-  letter-spacing: 5px;
-}
-
-.brand {
-  font-family: 'Abril Fatface', cursive;
-}
 
 .recent_posts {
   max-width: 500px;
@@ -55,4 +48,15 @@ main {
 
 .post_holder {
   max-width: 600px;
+}
+
+
+.brand {
+  font-family: 'Abril Fatface', cursive;
+  color: rgb(255, 255, 255);
+}
+
+.title {
+  font-family: 'Archivo Black', sans-serif;
+  text-decoration: none;
 }

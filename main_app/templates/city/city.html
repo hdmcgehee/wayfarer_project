@@ -2,155 +2,157 @@
 {% load widget_tweaks %}
 {% block content %}
 
+
+<div class="container">
+    <div class="notification">
+
+
         <!-- CITIES -->
-<div class="columns">
-    <div class="column is-one-third mt-6">
-        <div class="cities">
-        </div>
-
-        {% for cit in cities %}
-        
-        <a href="{% url 'city_index' cit.id %}">
-            <div class="card is-success" 
-            
-            {% if city.id == cit.id %}
-            style="background-color:#79B3EF;"
-            {% endif %}>
-                <div class="card-content">
-                    <div class="media">
-                        <div class="media-left">
-                            <figure class="image is-48x48">
-                                <img src="{{ cit.image }}" alt="Placeholder image">
-                            </figure>
-                        </div>
-                        <div class="media-content">
-                            <p 
-                            {% if city.id == cit.id %}
-                            style="color:white;" 
-                            {% endif %}
-                            class="title is-4">{{cit.name}}</p>
-                        </div>
-                    </div>
+        <div class="columns">
+            <div class="column is-one-third mt-6">
+                <div class="cities">
                 </div>
-            </div>
-        </a>
         
-        {% endfor %}
-    </div>
-
-            <!-- SELECTED CITY INFO -->
-    <div class="column is-two-thirds mt-6">
-        <div class="columns is-mobile">
-            <div class="column">
-                <p class="bd-notification is-info"></p>
-                <h1 class="is-1 title">{{city.name}}</h1>
-                <h2 class="is-2 subtitle">{{city.country}}</h2>
-            </div>
-            <div class="column">
-                <p class="bd-notification is-info"></p>
-                <img src="{{city.image}}" alt="" width="500">
-            </div>
-        </div>
-
-        <!-- CITY POSTS -->
-        <div class="posts">
-            <button class="button is-success is-pulled-right mr-6" id="add-post">Add Post</button>
-            <br>
-            <hr>
-            {% for post in city.post_set.all %}
-            <div class="card">
-                <div class="card-content">
-                    <div class="media">
-                        <div class="media-left">
-                            <figure class="image is-48x48">
-                                <img src="{{post.profile.image}}" alt="Post image">
-                            </figure>
-                        </div>
-                        <div class="media-content">
-                            <a href="{% url 'post_detail' post.id %}">
-                                <p class="title is-4">{{post.title}}</p>
-                            </a>
-                            <a href="{% url 'profile' post.profile_id %}">
-                                <p class="subtitle is-5" onmouseover="this.style.color='#79B3EF'"
-                                onmouseout="this.style.color='black'">{{post.profile}}</p>
-                                
-                            </a>
-                        </div>
-                    </div>
-                    <div class="content">
-                        {{post.content}}
-                        <br>
-                        {{post.created}}
-                        Comments: {{ post.comment_set.all | length }}
-                        
-                    </div>
-                    {% if post.profile_id == profile.id %}
-                    <div class="card-footer">
-                        <a href="{% url 'post_edit' post.id%}" class="card-footer-item is-5">
-                            Edit
-                        </a>
-                        <a href="#" class="card-footer-item is-5" id="delete-link-{{post.id}}">
-                            Delete
-                        </a>
-                        
-                        <!-- DELETE CONFIRMATION MODAL -->
-                        <div class="modal" id="delete-modal-{{post.id}}">
-                            <div class="modal-background"></div>
-                            <div class="modal-card">
-                                <div class="modal-card-head"></div>
-                                <div class="modal-card-body">
-                                    <p class="is-3"> Are you sure you want to Delete <span style="font-weight:bold;">{{post.title}}</span> ?</p>
-                                    <a href="{% url 'post_delete' post.id %}">
-                                        Delete
-                                    </a>
-                                    <a href="#" id="cancel-delete-{{post.id}}">
-                                        Cancel
-                                    </a>
+                {% for cit in cities %}
+        
+                <a href="{% url 'city_index' cit.id %}">
+                    <div class="card is-success" {% if city.id == cit.id %} style="background-color:#79B3EF;" {% endif %}>
+                        <div class="card-content">
+                            <div class="media">
+                                <div class="media-left">
+                                    <figure class="image is-48x48">
+                                        <img src="{{ cit.image }}" alt="Placeholder image">
+                                    </figure>
+                                </div>
+                                <div class="media-content">
+                                    <p {% if city.id == cit.id %} style="color:white;" {% endif %} class="title is-4">
+                                        {{cit.name}}</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    {% endif %}
-                    <!-- DELETE CONFIRMATION JS FOR MODAL -->
-                    <script>
-                            const deleteButton{{post.id}} = document.getElementById('delete-link-{{post.id}}');
-                            const deleteModal{{post.id}} = document.getElementById('delete-modal-{{post.id}}');
-                            const cancelDelete{{post.id}} = document.getElementById('cancel-delete-{{post.id}}');
-                            deleteButton{{post.id}}.addEventListener("click", () => { deleteModal{{post.id}}.classList.add('is-active') })
-                            cancelDelete{{post.id}}.addEventListener("click", () => { deleteModal{{post.id}}.classList.remove('is-active') })
-                    </script>
+                </a>
+        
+                {% endfor %}
+            </div>
+        
+            <!-- SELECTED CITY INFO -->
+            <div class="column is-two-thirds mt-6">
+                <div class="columns is-mobile">
+                    <div class="column">
+                        <p class="bd-notification is-info"></p>
+                        <h1 class="is-1 title">{{city.name}}</h1>
+                        <h2 class="is-2 subtitle">{{city.country}}</h2>
+                    </div>
+                    <div class="column">
+                        <p class="bd-notification is-info"></p>
+                        <img src="{{city.image}}" alt="" width="500">
                     </div>
                 </div>
-            {% endfor %}
+        
+                <!-- CITY POSTS -->
+                <div class="posts">
+                    <button class="button is-success is-pulled-right mr-6" id="add-post">Add Post</button>
+                    <br>
+                    <hr>
+                    {% for post in city.post_set.all %}
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="media">
+                                <div class="media-left">
+                                    <figure class="image is-48x48">
+                                        <img src="{{post.profile.image}}" alt="Post image">
+                                    </figure>
+                                </div>
+                                <div class="media-content">
+                                    <a href="{% url 'post_detail' post.id %}">
+                                        <p class="title is-4">{{post.title}}</p>
+                                    </a>
+                                    <a href="{% url 'profile' post.profile_id %}">
+                                        <p class="subtitle is-5" onmouseover="this.style.color='#79B3EF'"
+                                            onmouseout="this.style.color='black'">{{post.profile}}</p>
+        
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="content">
+                                {{post.content}}
+                                <br>
+                                {{post.created}}
+                                Comments: {{ post.comment_set.all | length }}
+        
+                            </div>
+                            {% if post.profile_id == profile.id %}
+                            <div class="card-footer">
+                                <a href="{% url 'post_edit' post.id%}" class="card-footer-item is-5">
+                                    Edit
+                                </a>
+                                <a href="#" class="card-footer-item is-5" id="delete-link-{{post.id}}">
+                                    Delete
+                                </a>
+        
+                                <!-- DELETE CONFIRMATION MODAL -->
+                                <div class="modal" id="delete-modal-{{post.id}}">
+                                    <div class="modal-background"></div>
+                                    <div class="modal-card">
+                                        <div class="modal-card-head"></div>
+                                        <div class="modal-card-body">
+                                            <p class="is-3"> Are you sure you want to Delete <span
+                                                    style="font-weight:bold;">{{post.title}}</span> ?</p>
+                                            <a href="{% url 'post_delete' post.id %}">
+                                                Delete
+                                            </a>
+                                            <a href="#" id="cancel-delete-{{post.id}}">
+                                                Cancel
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+                            <!-- DELETE CONFIRMATION JS FOR MODAL -->
+                            <script>
+                                const deleteButton{{ post.id }} = document.getElementById('delete-link-{{post.id}}');
+                                const deleteModal{{ post.id }} = document.getElementById('delete-modal-{{post.id}}');
+                                const cancelDelete{{ post.id }} = document.getElementById('cancel-delete-{{post.id}}');
+                                deleteButton{ { post.id } }.addEventListener("click", () => { deleteModal{ { post.id } }.classList.add('is-active') })
+                                cancelDelete{ { post.id } }.addEventListener("click", () => { deleteModal{ { post.id } }.classList.remove('is-active') })
+                            </script>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+        
+            </div>
+        
+        </div>
         </div>
 
-    </div>
+        <!-- NEW POST MODAL -->
+        <div class="modal" id="post-modal">
+            <div class="modal-background"></div>
+            <div class="modal-card">
+                <header class="modal-card-head">
+                    <p class="modal-card-title">New Post</p>
+                    <!-- <button class="delete" aria-label="close"></button> -->
+                </header>
+                <section class="modal-card-body">
 
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        {% render_field form.title class="input my-3" placeholder="Title"%}
+                        {% render_field form.content class="textarea my-3" placeholder="Your Comment"%}
+                </section>
+                <footer class="modal-card-foot">
+                    <button type="submit" class="button is-success">Add Post</button>
+                    </form>
+                    <button id="cancel-post" class="button">Cancel</button>
+                </footer>
+            </div>
+        </div>
     </div>
 </div>
 
-<!-- NEW POST MODAL -->
-<div class="modal" id="post-modal">
-    <div class="modal-background"></div>
-    <div class="modal-card">
-        <header class="modal-card-head">
-            <p class="modal-card-title">New Post</p>
-            <!-- <button class="delete" aria-label="close"></button> -->
-        </header>
-        <section class="modal-card-body">
-         
-            <form action="" method="POST">
-                {% csrf_token %}
-                {% render_field form.title class="input my-3" placeholder="Title"%}
-                {% render_field form.content class="textarea my-3" placeholder="Your Comment"%}
-        </section>
-        <footer class="modal-card-foot">
-            <button type="submit" class="button is-success">Add Post</button>
-            </form>
-            <button id="cancel-post" class="button">Cancel</button>
-        </footer>
-    </div>
-</div>
 
 <!-- JS FOR NEW POST MODAL -->
 <script>
@@ -161,7 +163,5 @@
     cancelPost.addEventListener("click", () => { postModal.classList.remove('is-active') })
 
 </script>
-
-
 
 {% endblock %}

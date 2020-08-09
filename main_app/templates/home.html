@@ -2,28 +2,27 @@
 {% load widget_tweaks %}
 {% block content %}
 
+<div class="container">
+  <div class="notification">
+
+
+
     <section class="section">
       <div class="container is-clipped">
         <div id="slider">
 
-        {% for city in cities %}
+          {% for city in cities %}
           <div class="card">
             <div class="card-image">
               <figure class="image is-16by9 is-covered">
-                
+
                 {% if user.is_authenticated %}
                 <a href="{% url 'city_index' city.id %}">
-                <img
-                  src="{{city.image}}"
-                  alt=""
-                />
-              </a>
-              {% else %}
-              <img
-                  src="{{city.image}}"
-                  alt=""
-                />
-              {% endif %}
+                  <img src="{{city.image}}" alt="" />
+                </a>
+                {% else %}
+                <img src="{{city.image}}" alt="" />
+                {% endif %}
 
               </figure>
             </div>
@@ -36,190 +35,194 @@
               </div>
             </div>
           </div>
-        {% endfor %}
+          {% endfor %}
 
 
         </div>
 
 
 
-          
+
     </section>
 
     <section class="about">
-        <h2 class="is-3 mb-6 ml-6">Wayfarer is community for travel discussion </h2>
+      <h2 class="is-3 mb-6 ml-6">Wayfarer is community for travel discussion </h2>
     </section>
 
     <section>
       <h3 class="title is-4 ml-6">Recent Posts...</h3>
-        <div class="columns">
-            <div class="column">
-                <div class="card">
-                    <header class="card-header">
-                      <p class="card-header-title">
-                        {{posts.0.title}}
-                      </p>
-                      <a href="#" class="card-header-icon" aria-label="more options">
-                        <span class="icon">
-                          <i class="fas fa-angle-down" aria-hidden="true"></i>
-                        </span>
-                      </a>
-                    </header>
-                    <div class="card-content">
-                      <div class="content">
-                        
-                      <p> {{posts.0.content}} </p>
-                      </div>
-                    </div>
-                  </div>
-            </div>
-            <div class="column">
-                <div class="card">
-                    <header class="card-header">
-                      <p class="card-header-title">
-                        {{posts.1.title}}
-                      </p>
-                      <a href="#" class="card-header-icon" aria-label="more options">
-                        <span class="icon">
-                          <i class="fas fa-angle-down" aria-hidden="true"></i>
-                        </span>
-                      </a>
-                    </header>
-                    <div class="card-content">
-                      <div class="content">
-                        <p> {{posts.1.content}} </p>
- 
-                      </div>
-                    </div>
-                  </div>
-            </div>
-            <div class="column">
-                <div class="card">
-                    <header class="card-header">
-                      <p class="card-header-title">
-                        {{posts.2.title}}
-                      </p>
-                      <a href="#" class="card-header-icon" aria-label="more options">
-                        <span class="icon">
-                          <i class="fas fa-angle-down" aria-hidden="true"></i>
-                        </span>
-                      </a>
-                    </header>
-                    <div class="card-content">
-                      <div class="content">
-                        <p> {{posts.2.content}} </p>
-                      </div>
-                    </div>
-                  </div>
+      <div class="columns">
+        <div class="column">
+          <div class="card">
+            <header class="card-header">
+              <p class="card-header-title">
+                {{posts.0.title}}
+              </p>
+              <a href="#" class="card-header-icon" aria-label="more options">
+                <span class="icon">
+                  <i class="fas fa-angle-down" aria-hidden="true"></i>
+                </span>
+              </a>
+            </header>
+            <div class="card-content">
+              <div class="content">
+
+                <p> {{posts.0.content}} </p>
+              </div>
             </div>
           </div>
+        </div>
+        <div class="column">
+          <div class="card">
+            <header class="card-header">
+              <p class="card-header-title">
+                {{posts.1.title}}
+              </p>
+              <a href="#" class="card-header-icon" aria-label="more options">
+                <span class="icon">
+                  <i class="fas fa-angle-down" aria-hidden="true"></i>
+                </span>
+              </a>
+            </header>
+            <div class="card-content">
+              <div class="content">
+                <p> {{posts.1.content}} </p>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="card">
+            <header class="card-header">
+              <p class="card-header-title">
+                {{posts.2.title}}
+              </p>
+              <a href="#" class="card-header-icon" aria-label="more options">
+                <span class="icon">
+                  <i class="fas fa-angle-down" aria-hidden="true"></i>
+                </span>
+              </a>
+            </header>
+            <div class="card-content">
+              <div class="content">
+                <p> {{posts.2.content}} </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
-		<script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/js/bulma-carousel.min.js"></script>
-		<script>
-		bulmaCarousel.attach('#carousel-demo', {
-			slidesToScroll: 1,
-			slidesToShow: 4
-		});
-		</script>
+    <script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/js/bulma-carousel.min.js"></script>
+    <script>
+      bulmaCarousel.attach('#carousel-demo', {
+        slidesToScroll: 1,
+        slidesToShow: 4
+      });
+    </script>
 
-<!-- error modal -->
-<div class="modal" id="error-modal">
-  <div class="modal-background"></div>
-  <div class="modal-card">
-    <header class="modal-card-head">
-      <p class="modal-card-title">Error</p>
+    <!-- error modal -->
+    <div class="modal" id="error-modal">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">Error</p>
 
-    </header>
-    <section class="modal-card-body">
-      <p>{{error}}</p>
-    </section>
-    <footer class="modal-card-foot">
-      <button id="okay" class="button">Okay</button>
-    </footer>
+        </header>
+        <section class="modal-card-body">
+          <p>{{error}}</p>
+        </section>
+        <footer class="modal-card-foot">
+          <button id="okay" class="button">Okay</button>
+        </footer>
+      </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div class="modal" id="sign-in-modal">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">SIGN IN</p>
+
+        </header>
+        <section class="modal-card-body">
+
+        </section>
+        <footer class="modal-card-foot">
+          <button class="button is-success">Save changes</button>
+          <button id="cancel-sign-in" class="button">Cancel</button>
+        </footer>
+      </div>
+    </div>
+
+    <!-- Sign Up Modal -->
+    <div class="modal" id="sign-up-modal">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">SIGN UP</p>
+
+        </header>
+        <section class="modal-card-body">
+
+          <form action="" method="POST">
+            {% csrf_token %}
+            {% render_field form.username class="input my-3" placeholder="Username"%}
+            {% render_field form.password class="input my-3" placeholder="Password"%}
+            {% render_field form.password class="input my-3" placeholder="Password Confirmation"%}
+            {{form.as_p}}
+
+        </section>
+        <footer class="modal-card-foot">
+          <button type="submit" value="sign_up" class="button is-success">Sign Up</button>
+          </form>
+          <button id="cancel-sign-up" class="button">Cancel</button>
+        </footer>
+      </div>
+    </div>
+
+
   </div>
 </div>
 
-<!-- Login Modal -->
-<div class="modal" id="sign-in-modal">
-  <div class="modal-background"></div>
-  <div class="modal-card">
-    <header class="modal-card-head">
-      <p class="modal-card-title">SIGN IN</p>
-
-    </header>
-    <section class="modal-card-body">
-
-    </section>
-    <footer class="modal-card-foot">
-      <button class="button is-success">Save changes</button>
-      <button id="cancel-sign-in" class="button">Cancel</button>
-    </footer>
-  </div>
-</div>
-
-<!-- Sign Up Modal -->
-<div class="modal" id="sign-up-modal">
-  <div class="modal-background"></div>
-  <div class="modal-card">
-    <header class="modal-card-head">
-      <p class="modal-card-title">SIGN UP</p>
-
-    </header>
-      <section class="modal-card-body">
- 
-      <form action="" method="POST">
-          {% csrf_token %}
-          {% render_field form.username class="input my-3" placeholder="Username"%}
-          {% render_field form.password class="input my-3" placeholder="Password"%}
-          {% render_field form.password class="input my-3" placeholder="Password Confirmation"%}
-          {{form.as_p}}
-        
-      </section>
-      <footer class="modal-card-foot">
-      <button type="submit" value="sign_up" class="button is-success">Sign Up</button>
-      </form>
-      <button id="cancel-sign-up" class="button">Cancel</button>
-    </footer>
-  </div>
-</div>
-
-<script>
-
-  //carousel
-  bulmaCarousel.attach('#slider', {
-    slidesToScroll: 1,
-    slidesToShow: 3,
-    infinite: true,
-  });
-
-
-  // Sign In Modal DOM manipulation
-  const signIn = document.getElementById('signin');
-  const modalSignIn = document.getElementById('sign-in-modal');
-  const cancelSignIn = document.getElementById('cancel-sign-in');
-  signIn.addEventListener("click",()=>{modalSignIn.classList.add('is-active')})
-  cancelSignIn.addEventListener("click",()=>{modalSignIn.classList.remove('is-active')})
-  
-  // Sign Up Modal DOM Manipulation
-  const signUp = document.getElementById('signup')
-  const modalSignUp = document.getElementById('sign-up-modal');
-  const cancelSignUp = document.getElementById('cancel-sign-up');
-  signUp.addEventListener("click",()=>{modalSignUp.classList.add('is-active')});
-  cancelSignUp.addEventListener("click",()=>{modalSignUp.classList.remove('is-active')});
-
-
-  const errorModal = document.getElementById('error-modal');
-  const okay = document.getElementById('okay');
-  okay.addEventListener("click",()=>{errorModal.classList.remove('is-active')});
-
-  {% if error %}
-    errorModal.classList.add('is-active');
-  {% endif%}
-</script>
 
 
 
+    <script>
+
+      //carousel
+      bulmaCarousel.attach('#slider', {
+        slidesToScroll: 1,
+        slidesToShow: 3,
+        infinite: true,
+      });
+
+
+      // Sign In Modal DOM manipulation
+      const signIn = document.getElementById('signin');
+      const modalSignIn = document.getElementById('sign-in-modal');
+      const cancelSignIn = document.getElementById('cancel-sign-in');
+      signIn.addEventListener("click", () => { modalSignIn.classList.add('is-active') })
+      cancelSignIn.addEventListener("click", () => { modalSignIn.classList.remove('is-active') })
+
+      // Sign Up Modal DOM Manipulation
+      const signUp = document.getElementById('signup')
+      const modalSignUp = document.getElementById('sign-up-modal');
+      const cancelSignUp = document.getElementById('cancel-sign-up');
+      signUp.addEventListener("click", () => { modalSignUp.classList.add('is-active') });
+      cancelSignUp.addEventListener("click", () => { modalSignUp.classList.remove('is-active') });
+
+
+      const errorModal = document.getElementById('error-modal');
+      const okay = document.getElementById('okay');
+      okay.addEventListener("click", () => { errorModal.classList.remove('is-active') });
+
+      {% if error %}
+      errorModal.classList.add('is-active');
+      {% endif %}
+    </script>
 
 
 
