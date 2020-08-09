@@ -51,12 +51,13 @@ main {
 }
 
 
-.brand {
-  font-family: 'Abril Fatface', cursive;
-  color: rgb(255, 255, 255);
-}
 
 .title {
   font-family: 'Archivo Black', sans-serif;
   text-decoration: none;
+}
+
+.brand {
+  font-family: 'Abril Fatface', cursive;
+  color: rgb(255, 255, 255);
 }
