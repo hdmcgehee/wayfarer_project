@@ -57,7 +57,7 @@ def city_index(request, city_id):
         return render(request, 'city/city.html', context)
 ```
 
-![Home Page](/images/city-page.png)
+![City Page](/images/city-page.png)
 
 
 Link: 
