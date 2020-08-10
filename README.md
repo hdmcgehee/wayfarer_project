@@ -5,7 +5,8 @@ Wayfarer Travel Community
 #### Group Members: Rommel Aquino, Henry McGehee, Nathan J Harris
 
 
-#### Home Page:
+Home Page:
+==============================================================
 ![Home Page](/images/wayfarer-homepage.png)
 
 
@@ -57,7 +58,8 @@ def city_index(request, city_id):
         return render(request, 'city/city.html', context)
 ```
 
-#### City Page:
+City Page:
+==============================================================
 ![City Page](/images/city-page.png)
 
 
