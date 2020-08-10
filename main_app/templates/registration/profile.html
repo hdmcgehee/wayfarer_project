@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load widget_tweaks %}
 {% block content %}
 
 
@@ -8,32 +9,35 @@
       <div class="columns is-centered">
         <div class="columns mx-6 my-6">
 
-          <figure>
-            <!-- PROFILE INFO -->            
+          <figure class="">
+            <!-- PROFILE INFO -->    
             {% load static %}
             <img src="{{this_profile.image}}" width="300" alt="My image">
+            <div class="is-grey pl-3">
             <p class = 'title'>{{this_profile.display_name}}</p>
-            <p>{{this_profile.city}}</p>
-            <hr>
-            <p>
-              Posts: {{current_profile.post_set.all | length}}
-            </p>
-            <p>
-              Comments: {{current_profile.comment_set.all | length}}
-            </p>
-            <p>Joined: {{user.date_joined}}</p>
+            <p class = 'subtitle'>{{this_profile.city}}</p>
+            
+              <p>
+                Posts: {{current_profile.post_set.all | length}}
+              </p>
+              <p>
+                Comments: {{current_profile.comment_set.all | length}}
+              </p>
+              <p>Joined: {{user.date_joined}}</p>
+            </div>       
+  
+              <hr>
+              {% if current_profile.id == this_profile.id %}
+              <button class='button' id = 'edit-button'>Edit Profile</button>
+              {%endif%}
 
-            <hr>
-            {% if current_profile.id == this_profile.id %}
-            <button class='button' id = 'edit-button'>Edit Profile</button>
-            {%endif%}
           </figure>
           
         </div>
 
         <div class="columns">
         <!-- RECENT POSTS -->
-          <div class="card mx-6 my-6 recent_posts">
+          <div class="card mx-6 my-6 recent_posts is-grey">
             <h1 class="title is-1 mx-6 my-6">Recent Posts</h1>
  
             {% for post in this_profile.post_set.all %}
@@ -82,7 +86,9 @@
         <section class="modal-card-body">
         <form action="" method="POST">
           {% csrf_token %}
-          {{ form.as_p }}
+          {% render_field form.display_name class="input my-3" placeholder="Display Name"%}
+          {% render_field form.image class="input my-3" placeholder="Image URL"%}
+          {% render_field form.city class="input my-3" placeholder="Current City"%}
         </section>
         <footer class="modal-card-foot">
         <button type="submit" value="sign_up" class="button is-success">Save Changes</button>

@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load widget_tweaks %}
 {% block content %}
 
     <div class='post_holder container is-centered mt-6'>
@@ -57,17 +58,16 @@
                 cancelDelete{ { post.id } }.addEventListener("click", () => { deleteModal{ { post.id } }.classList.remove('is-active') })
             </script>
         </div>
-    </div>
+            {% endif %}
 
-{% endif %}
 <hr>
 
 <!-- COMMENT TEXTAREA -->
 <div>
-    <h3 class="is-3">Comment</h3>
+  
     <form action="" method="POST">
         {% csrf_token %}
-        {{ form.as_p }}
+        {% render_field form.content class="textarea my-3" placeholder="Add A Public Comment"%}
         <button class="button is-info" type="submit">Comment</button>
     </form>
 </div>
@@ -77,7 +77,10 @@
     <div class='post_holder container is-centered mt-6'>
         <div class="card">
             <header class="card-header">
-                <p class="card-header-title title">
+                <figure class="image is-64x64 mr-3">
+                    <img src="{{post.profile.image}}" alt="Post image">
+                </figure>
+                <p class="title">
                     {{comment.profile}}
                 </p>
             </header>
@@ -97,11 +100,11 @@
                     Delete
                 </a>
             </div>
+            {% endif %}
         </div>
     </div>
-{% endif %}
-
 {% endfor %}
 
+    </div>
 
 {% endblock %}
