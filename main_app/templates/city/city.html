@@ -29,6 +29,7 @@
                             {% endif %}
                             class="title is-4">{{cit.name}}</p>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -67,7 +68,8 @@
                         </div>
                         <div class="media-content">
                             <a href="{% url 'post_detail' post.id %}">
-                                <p class="title is-4">{{post.title}}</p>
+                                <p class="title is-4" onmouseover="this.style.color='#79B3EF'"
+                                onmouseout="this.style.color='black'">{{post.title}}</p>
                             </a>
                             <a href="{% url 'profile' post.profile_id %}">
                                 <p class="subtitle is-5" onmouseover="this.style.color='#79B3EF'"
@@ -117,6 +119,8 @@
                             const cancelDelete{{post.id}} = document.getElementById('cancel-delete-{{post.id}}');
                             deleteButton{{post.id}}.addEventListener("click", () => { deleteModal{{post.id}}.classList.add('is-active') })
                             cancelDelete{{post.id}}.addEventListener("click", () => { deleteModal{{post.id}}.classList.remove('is-active') })
+
+                            
                     </script>
                     </div>
                 </div>
