@@ -50,7 +50,9 @@ main {
   max-width: 600px;
 }
 
-
+.is-grey {
+  background-color: #F0F0F0;
+}
 
 .title {
   font-family: 'Archivo Black', sans-serif;
