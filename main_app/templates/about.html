@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container">
+  <div class="notification">
+
+
+
+
+    <h1 class="is-1 title mt-6 mb-6 has-text-centered" style="color: #484848;">Our Team</h1>
+
+    <section class="mt-6">
+      <div class="columns">
+        <div class="column">
+          <div class="card">
+            <figure class="image">
+              {% load static %}
+              <img src="{% static 'images/rommel.png' %}" alt="Placeholder image">
+            </figure>
+            <header class="card-header">
+              <p class="card-header-title footer">
+                Rommel Aquino
+              </p>
+
+            </header>
+            <div class="card-content">
+              <div class="content">
+                I am very fortunate to have had the chance to work with Nathan and Henry for this project. It has been a
+                pleasure to learn from them and pick their brains. What we were able to accomplish this
+                week motivated to become a better developer. I'm thankful for this experience and will continue to take
+                what I've learned this past week and apply it to my future career.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="card">
+            <figure class="image">
+              {% load static %}
+              <img src="{% static 'images/Nathan.jpg' %}" alt="Placeholder image">
+            </figure>
+            <header class="card-header">
+              <p class="card-header-title footer">
+                Nathan J Harris
+              </p>
+
+            </header>
+            <div class="card-content">
+              <div class="content">
+                I enjoyed working on a team for this project as together we persevered through challenges and discovered
+                new ways to develop with Django. Through this project we all learned how to use Django on a wholistic
+                level. I’m grateful for our team which have made this a memorable experience.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="card">
+            <figure class="image">
+              {% load static %}
+              <img src="{% static 'images/Henry.jpeg' %}" alt="Placeholder image">
+            </figure>
+            <header class="card-header">
+              <p class="card-header-title footer">
+                Henry McGehee
+              </p>
+
+            </header>
+            <div class="card-content">
+              <div class="content">
+                Our team worked well together with minimal issues. We were able to knock out all of our intended
+                features at a relativly quick pace. The major features were developed using peer programming. This
+                assured that we built our site on a strong foundation. After we met the project requirements and reached
+                feature lock, we broke off on our own to polish the user experience and site design.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+
+
+
+
+{% endblock %}

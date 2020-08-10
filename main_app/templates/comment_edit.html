@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-{% load widget_tweaks %}
 {% block content %}
 
     <div class='post_holder container is-centered mt-6'>
@@ -58,18 +57,31 @@
                 cancelDelete{ { post.id } }.addEventListener("click", () => { deleteModal{ { post.id } }.classList.remove('is-active') })
             </script>
         </div>
-            {% endif %}
+    </div>
 
+{% endif %}
 <hr>
 
 <!-- COMMENT TEXTAREA -->
-<div>
-  
-    <form action="" method="POST">
-        {% csrf_token %}
-        {% render_field form.content class="textarea my-3" placeholder="Add A Public Comment"%}
-        <button class="button is-info" type="submit">Comment</button>
-    </form>
+
+<div class="modal is-active">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+        <header class="modal-card-head">
+            <p class="modal-card-title">Edit Comment</p>
+            <!-- <button class="delete" aria-label="close"></button> -->
+        </header>
+        <section class="modal-card-body">
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+        </section>
+        <footer class="modal-card-foot">
+            <button type="submit" class="button is-success">Save Changes</button>
+            </form>
+            <a href="{% url 'post_detail' post.id %}"><button class="button">Cancel</button></a>
+        </footer>
+    </div>
 </div>
 
 
@@ -77,10 +89,7 @@
     <div class='post_holder container is-centered mt-6'>
         <div class="card">
             <header class="card-header">
-                <figure class="image is-64x64 mr-3">
-                    <img src="{{comment.profile.image}}" alt="Comment image">
-                </figure>
-                <p class="title">
+                <p class="card-header-title title">
                     {{comment.profile}}
                 </p>
             </header>
@@ -96,15 +105,15 @@
                 <a href="{% url 'comment_edit' comment.id %}" class="card-footer-item is-5">
                     Edit
                 </a>
-                <a href="{% url 'comment_delete' comment.id %}" class="card-footer-item is-5" id="delete-link-{{post.id}}">
+                <a href="#" class="card-footer-item is-5" id="delete-link-{{post.id}}">
                     Delete
                 </a>
             </div>
-            {% endif %}
         </div>
     </div>
+{% endif %}
+
 {% endfor %}
 
-    </div>
 
 {% endblock %}

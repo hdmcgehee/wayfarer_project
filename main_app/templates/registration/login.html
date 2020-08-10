@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load widget_tweaks %}
 {% block content %}
 
     <section class="section">
@@ -118,16 +119,18 @@
       <!-- <button class="delete" aria-label="close"></button> -->
     </header>
     <section class="modal-card-body">
-      <p>THIS IS SIGN IN FORM</p>
+
     <form method="post" action="{% url 'login' %}">
         {% csrf_token %}
-        {{ form.as_p }}
+       
+        {% render_field form.username class="input my-3" placeholder="Username"%}
+        {% render_field form.password class="input my-3" placeholder="Password"%}
         <input type="hidden" name="next" value="{{ next }}">
         </section>
         <footer class="modal-card-foot">
-            <button type="submit" class="button is-success" value="login">Save changes</button>
+            <button type="submit" class="button is-success" value="login">Log In</button>
     </form>
-      <button id="cancel-sign-in" class="button">Cancel</button>
+      <a href="{% url 'signup' %}"><button class="button">Cancel</button></a>
     </footer>
   </div>
 </div>
@@ -144,7 +147,7 @@
         <p>THIS IS SIGN UP FORM</p>
       <form action="" method="POST">
           {% csrf_token %}
-          {{ form.as_p }}
+          
         
       </section>
       <footer class="modal-card-foot">

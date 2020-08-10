@@ -1,116 +1,112 @@
 {% extends 'base.html' %}
+{% load widget_tweaks %}
 {% block content %}
+
+<div class="container">
+  <div class="notification">
+
+
 
     <section class="section">
       <div class="container is-clipped">
         <div id="slider">
+
+          {% for city in cities %}
           <div class="card">
             <div class="card-image">
               <figure class="image is-16by9 is-covered">
-                <img
-                  src="https://images.unsplash.com/photo-1550921082-c282cdc432d6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"
-                  alt=""
-                />
+
+                {% if user.is_authenticated %}
+                <a href="{% url 'city_index' city.id %}">
+                  <img src="{{city.image}}" alt="" />
+                </a>
+                {% else %}
+                <img src="{{city.image}}" alt="" />
+                {% endif %}
+
               </figure>
             </div>
             <div class="card-content">
-              <div class="item__title">
-                Mon titre 1
+              <div class="city.title">
+                {{city.name}}
               </div>
               <div class="item__description">
-                Ici une petite description pour tester le slider
+                {{city.country}}
               </div>
             </div>
           </div>
+          {% endfor %}
 
+
+        </div>
+
+
+
+
+    </section>
+
+    <section class="about">
+      <h2 class="is-3 mb-6 ml-6">Wayfarer is community for travel discussion </h2>
+    </section>
+
+    <section>
+      <h3 class="title is-4 ml-6">Recent Posts...</h3>
+      <div class="columns">
+        <div class="column">
           <div class="card">
-            <div class="card-image">
-              <figure class="image is-16by9 is-covered">
-                <img
-                  src="https://images.unsplash.com/photo-1550945771-515f118cef86?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
-                  alt=""
-                />
-              </figure>
-            </div>
+            <header class="card-header">
+              <p class="card-header-title">
+                {{posts.0.title}}
+              </p>
+              <a href="#" class="card-header-icon" aria-label="more options">
+                <span class="icon">
+                  <i class="fas fa-angle-down" aria-hidden="true"></i>
+                </span>
+              </a>
+            </header>
             <div class="card-content">
-              <div class="item__title">
-                Mon titre 2
-              </div>
-              <div class="item__description">
-                Ici une petite description pour tester le slider
+              <div class="content">
+
+                <p> {{posts.0.content}} </p>
               </div>
             </div>
           </div>
-
+        </div>
+        <div class="column">
           <div class="card">
-            <div class="card-image">
-              <figure class="image is-16by9 is-covered">
-                <img
-                  src="https://images.unsplash.com/photo-1550971264-3f7e4a7bb349?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"
-                  alt=""
-                />
-              </figure>
-            </div>
+            <header class="card-header">
+              <p class="card-header-title">
+                {{posts.1.title}}
+              </p>
+              <a href="#" class="card-header-icon" aria-label="more options">
+                <span class="icon">
+                  <i class="fas fa-angle-down" aria-hidden="true"></i>
+                </span>
+              </a>
+            </header>
             <div class="card-content">
-              <div class="item__title">
-                Mon titre 3
-              </div>
-              <div class="item__description">
-                Ici une petite description pour tester le slider
+              <div class="content">
+                <p> {{posts.1.content}} </p>
+
               </div>
             </div>
           </div>
-
+        </div>
+        <div class="column">
           <div class="card">
-            <div class="card-image">
-              <figure class="image is-16by9 is-covered">
-                <img
-                  src="https://images.unsplash.com/photo-1550931937-2dfd45a40da0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"
-                  alt=""
-                />
-              </figure>
-            </div>
+            <header class="card-header">
+              <p class="card-header-title">
+                {{posts.2.title}}
+              </p>
+              <a href="#" class="card-header-icon" aria-label="more options">
+                <span class="icon">
+                  <i class="fas fa-angle-down" aria-hidden="true"></i>
+                </span>
+              </a>
+            </header>
             <div class="card-content">
-              <div class="item__title">
-                Mon titre 4
-              </div>
-              <div class="item__description">
-                Ici une petite description pour tester le slider
-              </div>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card-image">
-              <figure class="image is-16by9 is-covered">
-                <img
-                  src="https://images.unsplash.com/photo-1550930516-af8b8cc4f871?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
-                  alt=""
-                />
-              </figure>
-            </div>
-            <div class="card-content">
-              <div class="item__title">
-                Mon titre 5
-              </div>
-              <div class="item__description">
-                Ici une petite description pour tester le slider
-              </div>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card-image">
-              <figure class="image video-container is-16by9">
-                <iframe type="text/html" src="https://www.youtube.com/embed/H0v773vKS_U" frameborder="0"></iframe>
-              </figure>
-            </div>
-            <div class="card-content">
-              <div class="item__title">
-                Mon titre 6
-              </div>
-              <div class="item__description">
-                Ici une petite description pour tester le slider
+              <div class="content">
+                <p> {{posts.2.content}} </p>
               </div>
             </div>
           </div>
@@ -118,189 +114,115 @@
       </div>
     </section>
 
-    <section class="about">
-        <h2 class="is-6 mb-6 ml-6">Wayfarer is a dank app for travel discussion </h2>
-    </section>
+    <script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/js/bulma-carousel.min.js"></script>
+    <script>
+      bulmaCarousel.attach('#carousel-demo', {
+        slidesToScroll: 1,
+        slidesToShow: 4
+      });
+    </script>
 
-    <section>
-        <div class="columns">
-            <div class="column">
-                <div class="card">
-                    <header class="card-header">
-                      <p class="card-header-title">
-                        Topic
-                      </p>
-                      <a href="#" class="card-header-icon" aria-label="more options">
-                        <span class="icon">
-                          <i class="fas fa-angle-down" aria-hidden="true"></i>
-                        </span>
-                      </a>
-                    </header>
-                    <div class="card-content">
-                      <div class="content">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-                      </div>
-                    </div>
-                  </div>
-            </div>
-            <div class="column">
-                <div class="card">
-                    <header class="card-header">
-                      <p class="card-header-title">
-                        Topic
-                      </p>
-                      <a href="#" class="card-header-icon" aria-label="more options">
-                        <span class="icon">
-                          <i class="fas fa-angle-down" aria-hidden="true"></i>
-                        </span>
-                      </a>
-                    </header>
-                    <div class="card-content">
-                      <div class="content">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-                      </div>
-                    </div>
-                  </div>
-            </div>
-            <div class="column">
-                <div class="card">
-                    <header class="card-header">
-                      <p class="card-header-title">
-                        Topic
-                      </p>
-                      <a href="#" class="card-header-icon" aria-label="more options">
-                        <span class="icon">
-                          <i class="fas fa-angle-down" aria-hidden="true"></i>
-                        </span>
-                      </a>
-                    </header>
-                    <div class="card-content">
-                      <div class="content">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-                      </div>
-                    </div>
-                  </div>
-            </div>
-          </div>
-    </section>
+    <!-- error modal -->
+    <div class="modal" id="error-modal">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">Error</p>
 
-		<script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/js/bulma-carousel.min.js"></script>
-		<script>
-		bulmaCarousel.attach('#carousel-demo', {
-			slidesToScroll: 1,
-			slidesToShow: 4
-		});
-		</script>
+        </header>
+        <section class="modal-card-body">
+          <p>{{error}}</p>
+        </section>
+        <footer class="modal-card-foot">
+          <button id="okay" class="button">Okay</button>
+        </footer>
+      </div>
+    </div>
 
-<!-- error modal -->
-<div class="modal" id="error-modal">
-  <div class="modal-background"></div>
-  <div class="modal-card">
-    <header class="modal-card-head">
-      <p class="modal-card-title">Error</p>
+    <!-- Login Modal -->
+    <div class="modal" id="sign-in-modal">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">SIGN IN</p>
 
-    </header>
-    <section class="modal-card-body">
-      <p>{{error}}</p>
-    </section>
-    <footer class="modal-card-foot">
-      <button id="okay" class="button">Okay</button>
-    </footer>
+        </header>
+        <section class="modal-card-body">
+
+        </section>
+        <footer class="modal-card-foot">
+          <button class="button is-success">Save changes</button>
+          <button id="cancel-sign-in" class="button">Cancel</button>
+        </footer>
+      </div>
+    </div>
+
+    <!-- Sign Up Modal -->
+    <div class="modal" id="sign-up-modal">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">SIGN UP</p>
+
+        </header>
+        <section class="modal-card-body">
+
+          <form action="" method="POST">
+            {% csrf_token %}
+            {% render_field form.username class="input my-3" placeholder="Username"%}
+            {% render_field form.password class="input my-3" placeholder="Password"%}
+            {% render_field form.password class="input my-3" placeholder="Password Confirmation"%}
+            {{form.as_p}}
+
+        </section>
+        <footer class="modal-card-foot">
+          <button type="submit" value="sign_up" class="button is-success">Sign Up</button>
+          </form>
+          <button id="cancel-sign-up" class="button">Cancel</button>
+        </footer>
+      </div>
+    </div>
+
+
   </div>
 </div>
 
-<!-- Login Modal -->
-<div class="modal" id="sign-in-modal">
-  <div class="modal-background"></div>
-  <div class="modal-card">
-    <header class="modal-card-head">
-      <p class="modal-card-title">SIGN IN</p>
-
-    </header>
-    <section class="modal-card-body">
-      <p>THIS IS SIGN IN FORM</p>
-    </section>
-    <footer class="modal-card-foot">
-      <button class="button is-success">Save changes</button>
-      <button id="cancel-sign-in" class="button">Cancel</button>
-    </footer>
-  </div>
-</div>
-
-<!-- Sign Up Modal -->
-<div class="modal" id="sign-up-modal">
-  <div class="modal-background"></div>
-  <div class="modal-card">
-    <header class="modal-card-head">
-      <p class="modal-card-title">SIGN UP</p>
-
-    </header>
-      <section class="modal-card-body">
-        <p>THIS IS SIGN UP FORM</p>
-      <form action="" method="POST">
-          {% csrf_token %}
-          {{ form.as_p }}
-        
-      </section>
-      <footer class="modal-card-foot">
-      <button type="submit" value="sign_up" class="button is-success">Sign Up</button>
-      </form>
-      <button id="cancel-sign-up" class="button">Cancel</button>
-    </footer>
-  </div>
-</div>
-
-<script>
-
-  //carousel
-  bulmaCarousel.attach('#slider', {
-    slidesToScroll: 1,
-    slidesToShow: 3,
-    infinite: true,
-  });
-
-
-  // Sign In Modal DOM manipulation
-  const signIn = document.getElementById('signin');
-  const modalSignIn = document.getElementById('sign-in-modal');
-  const cancelSignIn = document.getElementById('cancel-sign-in');
-  signIn.addEventListener("click",()=>{modalSignIn.classList.add('is-active')})
-  cancelSignIn.addEventListener("click",()=>{modalSignIn.classList.remove('is-active')})
-  
-  // Sign Up Modal DOM Manipulation
-  const signUp = document.getElementById('signup')
-  const modalSignUp = document.getElementById('sign-up-modal');
-  const cancelSignUp = document.getElementById('cancel-sign-up');
-  signUp.addEventListener("click",()=>{modalSignUp.classList.add('is-active')});
-  cancelSignUp.addEventListener("click",()=>{modalSignUp.classList.remove('is-active')});
-
-
-  const errorModal = document.getElementById('error-modal');
-  const okay = document.getElementById('okay');
-  okay.addEventListener("click",()=>{errorModal.classList.remove('is-active')});
-
-  {% if error %}
-    errorModal.classList.add('is-active');
-  {% endif%}
-</script>
 
 
 
+    <script>
+
+      //carousel
+      bulmaCarousel.attach('#slider', {
+        slidesToScroll: 1,
+        slidesToShow: 3,
+        infinite: true,
+      });
+
+
+      // Sign In Modal DOM manipulation
+      const signIn = document.getElementById('signin');
+      const modalSignIn = document.getElementById('sign-in-modal');
+      const cancelSignIn = document.getElementById('cancel-sign-in');
+      signIn.addEventListener("click", () => { modalSignIn.classList.add('is-active') })
+      cancelSignIn.addEventListener("click", () => { modalSignIn.classList.remove('is-active') })
+
+      // Sign Up Modal DOM Manipulation
+      const signUp = document.getElementById('signup')
+      const modalSignUp = document.getElementById('sign-up-modal');
+      const cancelSignUp = document.getElementById('cancel-sign-up');
+      signUp.addEventListener("click", () => { modalSignUp.classList.add('is-active') });
+      cancelSignUp.addEventListener("click", () => { modalSignUp.classList.remove('is-active') });
+
+
+      const errorModal = document.getElementById('error-modal');
+      const okay = document.getElementById('okay');
+      okay.addEventListener("click", () => { errorModal.classList.remove('is-active') });
+
+      {% if error %}
+      errorModal.classList.add('is-active');
+      {% endif %}
+    </script>
 
 
 
