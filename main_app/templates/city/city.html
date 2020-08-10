@@ -67,8 +67,7 @@
                                 </div>
                                 <div class="media-content">
                                     <a href="{% url 'post_detail' post.id %}">
-                                        <p class="title is-4" onmouseover="this.style.color='#79B3EF'"
-                                            onmouseout="this.style.color='black'">{{post.title}}</p>
+                                        <p class="title is-4">{{post.title}}</p>
                                     </a>
                                     <a href="{% url 'profile' post.profile_id %}">
                                         <p class="subtitle is-5">{{post.profile}}</p>
