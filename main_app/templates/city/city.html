@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load widget_tweaks %}
+<!-- {% load widget_tweaks %} -->
 {% block content %}
 
 
@@ -30,6 +30,7 @@
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </a>
         
@@ -66,11 +67,11 @@
                                 </div>
                                 <div class="media-content">
                                     <a href="{% url 'post_detail' post.id %}">
-                                        <p class="title is-4">{{post.title}}</p>
+                                        <p class="title is-4" onmouseover="this.style.color='#79B3EF'"
+                                            onmouseout="this.style.color='black'">{{post.title}}</p>
                                     </a>
                                     <a href="{% url 'profile' post.profile_id %}">
-                                        <p class="subtitle is-5" onmouseover="this.style.color='#79B3EF'"
-                                            onmouseout="this.style.color='black'">{{post.profile}}</p>
+                                        <p class="subtitle is-5">{{post.profile}}</p>
         
                                     </a>
                                 </div>

@@ -63,3 +63,15 @@ main {
   font-family: 'Abril Fatface', cursive;
   color: rgb(255, 255, 255);
 }
+
+.card-content:hover{
+  color: white;
+  background-color: #79B3EF;
+}
+
+
+/* .title:hover{
+  border: 2px solid rgb(57, 201, 28);
+  color: #79B3EF;
+} */
+  
