@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load widget_tweaks %}
 {% block content %}
 
 
@@ -13,7 +14,7 @@
             {% load static %}
             <img src="{{this_profile.image}}" width="300" alt="My image">
             <p class = 'title'>{{this_profile.display_name}}</p>
-            <p>{{this_profile.city}}</p>
+            <p class = 'subtitle'>{{this_profile.city}}</p>
             <hr>
             <p>
               Posts: {{current_profile.post_set.all | length}}
@@ -82,7 +83,9 @@
         <section class="modal-card-body">
         <form action="" method="POST">
           {% csrf_token %}
-          {{ form.as_p }}
+          {% render_field form.display_name class="input my-3" placeholder="Display Name"%}
+          {% render_field form.image class="input my-3" placeholder="Image URL"%}
+          {% render_field form.city class="input my-3" placeholder="Current City"%}
         </section>
         <footer class="modal-card-foot">
         <button type="submit" value="sign_up" class="button is-success">Save Changes</button>
