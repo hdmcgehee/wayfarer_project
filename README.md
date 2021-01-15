@@ -1,4 +1,4 @@
-Wayfarer Travel Community
+[Wayfarer Travel Community](https://wayfarer-rhn-sei12.herokuapp.com/)
 ==============================================================
 
 ### A group project for GA's Django Unit
